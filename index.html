@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="src/styles/stylesMain.css">
+  </head>
+  <body>
+    <!-- Barra de navegacion -->
+    <header class="header">
+      <div class="header__container">
+        <a href="" class="header__title"><img title="hola" class="header__logo" src="src/img/logo_ITPM.png"><p class="title">REPOSITORIO ACADEMICO DE EL ITPM</p></a>
+        <nav class="nav">
+          <a href="" class="Nav__a">Ayuda</a>
+          <a href="" class="Nav__a">Contacto</a>
+          <a href="" class="Nav__a">Acerca de</a>
+        </nav>
+      </div>
+    </header>
+    <!-- Pagina 1 -->
+    <section class="section">
+      <article class="article">
+        <h1 class="article__nomInstitucion">
+          INSTITUTO TECNOLÓGICO "PUERTO DE MEJILLONES"
+        </h1>
+        <p class="article__presentacion">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+          dolore deserunt maxime dicta facere ut   accusantium animi suscipit
+          quidem? Facilis facere magnam itaque totam asperiores deserunt
+          blanditiis, voluptates reiciendis soluta.
+        </p>
+        <form action="src/pages/searchAll.html" class="formBusc" method="get" search-form-all>
+          <input class="formBusc__barra" type="text" placeholder="buscar" name="searchAll" data-search-all />
+          <!-- <input class="formBusc__Button" type="submit" value="Buscar" /> -->
+          <button class="formBusc__Button" type="submit" >Buscar</button>  
+        </form>
+        <div class="containerCajas">
+          <div class="cajaCount">
+            <span class="cajaCount__conteo">255</span>
+            <p class="cajaCount__modalidad">Proyecto de Grado</p>
+          </div>
+          <div class="cajaCount">
+            <span class="cajaCount__conteo">255</span>
+            <p class="cajaCount__modalidad">Proyecto de Grado</p>
+          </div>
+        </div>
+      </article>
+      <article class="articlePag2">
+        <h3 class="articlePag2__titleCajas">CARRERAS - CONTENIDOS</h3>
+        <div class="cajasCarreras" caja-carreras>
+        </div>
+        <template caja-carreras-template>
+          <div caja-container class="cajasCarreras__links">
+            <a caja></a>
+          </div>
+        </template>
+      </article>
+      <aside class="asidePag3">
+        <div class="cajaDesct">
+          <h4 class="cajaDesct__titleDesct">Titulos Destacados</h4>
+          <div class="contentDesc">
+            <p class="contentDesc__tituloProy">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Aspernatur, necessitatibus.
+            </p>
+            <p class="contentDesc__Autor">Lorem, ipsum.</p>
+          </div>
+        </div>
+        <div class="cajaAño">
+          <h4 class="cajaAño__Title">Año de Producción</h4>
+          <div class="contentAño">
+            <p class="contentAño__año">2020</p>
+            <p class="contentAño__recursos">26 recursos</p>
+          </div>
+        </div>
+    </section>
+    <!-- Pie de pagina -->
+    <footer class="footer">
+      <ul class="footerLink">
+        <li><a class="footerLink__link" href="">Directorio</a>/li>
+        <li><a class="footerLink__link" href="">Contacto</a></li>
+        <li> <a class="footerLink__link" href="">Normativa</a></li>
+      </ul>
+     
+      <p class="footer__text">
+        2022 Instituto "Tecnológico Puerto de Mejillones" de Bolivia,
+        Repositorio Academico
+      </p>
+    </footer>
+  </body>
+  <script src="src/app/appMain.js" type="module"></script>
+
+</html>

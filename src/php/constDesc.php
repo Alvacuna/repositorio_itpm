@@ -1,10 +1,6 @@
 <?php
 include 'conect.php';
-// echo conexion();
 
-
-
-// echo conexion();
 $conexion = conexion();
 
 if (isset($_GET['id'])) {

@@ -59,13 +59,11 @@ input {
     font-size: 1rem;
 }
 .formSearch {
-    border: 1px solid black;
     width: 85%;
     margin: 25px auto 0 auto;
-    padding: 0;
 }
 .formSearch__input {
-    width: 50%;
+    width: 60%;
 }
 
 
@@ -73,17 +71,20 @@ input {
 
 
 .user-cards {
+    width: 1200px;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: .25rem;
-    margin-top: 1rem;
+    margin-top: 1rem;       
 }
 
 .card {
+    width: 200px;
     border: 1px solid black;
-    background-color: white;
+    background-color: #777  ;
     padding: .5rem;
-}
+}   
 .card > .header {
     margin-bottom: .25rem;
 }

@@ -168,6 +168,7 @@
     width: 280px;
     background-color: rgb(255, 187, 187);
     border: #000 solid 1px;
+    overflow: auto;
 }
 .contentDesc__tituloProy {
     text-align: justify;

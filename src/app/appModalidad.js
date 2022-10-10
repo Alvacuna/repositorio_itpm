@@ -1,4 +1,5 @@
-import { getAllProyects } from "../services/getAllProyects.js";
+import { getExcluMod } from "../services/getExcluMod.js";
+
 
 const userCardTemplate = document.querySelector("[data-user-template]");
 const userCardContainer = document.querySelector("[data-user-cards-container]");
@@ -10,7 +11,7 @@ const btnAutor = document.querySelector("[autor]");
 const btnGestion = document.querySelector("[gestion]");
 const btnTutor = document.querySelector("[tutor]");
 
-let stateFilter = 1;
+let stateFilter = 2;
 
 btnAll.addEventListener("click", (e) => {
   e.preventDefault();
@@ -52,21 +53,7 @@ function getGET() {
   }
 }
 
-searchInput.value = getGET() == undefined ? "" : getGET().searchAll;
 
-setTimeout(() => {
-  if (getGET() != undefined) {
-    console.log(getGET().searchAll);
-    document.getElementById("active").click();
-  } else {
-    console.log("no hay nada");
-  }
-}, 200);
-
-console.log(searchInput.value);
-// const removeAccents = (str) => {
-//   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-// }
 
 searchFomr.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -112,38 +99,12 @@ let contadoInf = 0;
 sig.addEventListener("click", (e) => {
   e.preventDefault();
 
-  // let contador = 0
-  // users.map((user, i) => {
-  //   (user.element.className === "card") ? console.log("se ve "+ i) : console.log("no se ve " + i)
-  // })
 });
 
-// const getAllProyects = () => {
-//   return fetch("php/config.php")
-//     .then((response) => response.json())
-//     .then((data) => data);
-// };
 
-getAllProyects().then((data) => {
-  // let contSup = 2;
-  // let contInf =0
-  // let dat  = data.slice(0, 2)
-  // sig.addEventListener("click", (e) => {
-  //   e.preventDefault();
-  //   contSup = contSup+2;
-  //   contInf= contInf+2
-  //   dat =data.slice(contInf, contSup);
-  //   count.textContent = contSup;
-  //   console.log(dat)
-  // });
-  // ant.addEventListener("click", (e) => {
-  //   e.preventDefault();
-  //   contSup = contSup-2;
-  //   contInf= contInf-2
-  //   dat =data.slice(contInf, contSup);
-  //   count.textContent = contSup;
-  //   console.log(dat)
-  // });
+
+getExcluMod(getGET().id).then((data) => {
+
 
   users = data.map((user) => {
     const card = userCardTemplate.content.cloneNode(true).children[0];
@@ -198,18 +159,3 @@ getAllProyects().then((data) => {
   });
 });
 
-// fetch("php/config.php")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     users = data.map((user) => {
-//       console.log(user);
-//       const card = userCardTemplate.content.cloneNode(true).children[0];
-//       const header = card.querySelector("[data-header]");
-//       const body = card.querySelector("[data-body]");
-//       header.textContent = user.title;
-//       body.textContent = user.resumen;
-//       header.setAttribute("href", "https://www.w3schools.com");
-//       userCardContainer.append(card);
-//       return { title: user.title, resumen: user.resumen, element: card };
-//     });
-//   });

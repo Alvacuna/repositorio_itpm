@@ -1,10 +1,6 @@
 <?php
+
 include 'conect.php';
-// echo conexion();
-
-
-
-// echo conexion();
 $conexion = conexion();
 
 if (isset($_GET['id'])) {
@@ -16,30 +12,27 @@ if (isset($_GET['id'])) {
             AND tt.id_trabajos = ti.id_trabajos
             AND tt.id_tutor = t.id_tutor
             AND ti.id_carrera = c.id_carrera
-            AND tt.id_trabajos =" . $_GET['id'];
+            AND ti.gestion=". $_GET['id'];
     $resultado = mysqli_query($conexion, $sql);
     $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-
     if (!empty($datos)) {
         echo json_encode($datos);
     } else {
         echo json_encode([]);
     }
+    
 } else {
-    $sql = "SELECT  ti.*,a.*,t.*, c.*
-    FROM trabajos_institucionales AS ti,autor AS a, tutor AS t, 
-        trabajos_autor AS ta,trabajos_tutor AS tt, carreras AS c
-        WHERE  ta.id_trabajos = ti.id_trabajos
-            AND ta.id_autor = a.id_autor
-            AND tt.id_trabajos = ti.id_trabajos
-            AND tt.id_tutor = t.id_tutor
-            AND ti.id_carrera = c.id_carrera";
+    $sql = "SELECT count(gestion) AS cantidad,gestion 
+	FROM trabajos_institucionales
+		GROUP BY gestion";
     $resultado = mysqli_query($conexion, $sql);
     $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-
     if (!empty($datos)) {
         echo json_encode($datos);
     } else {
         echo json_encode([]);
     }
+    
 }
+
+

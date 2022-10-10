@@ -36,16 +36,17 @@
           <!-- <input class="formBusc__Button" type="submit" value="Buscar" /> -->
           <button class="formBusc__Button" type="submit" >Buscar</button>  
         </form>
-        <div class="containerCajas">
-          <div class="cajaCount">
-            <span class="cajaCount__conteo">255</span>
-            <p class="cajaCount__modalidad">Proyecto de Grado</p>
+        <div class="containerCajas" container-cajas>
+          <div class="cajaCount" caja-contador>
+            <span class="cajaCount__conteo" contador></span> <br>
+            <a href="" class="cajaCount__modalidad" caja-modalidad>Trabajos de grado</a>
           </div>
-          <div class="cajaCount">
-            <span class="cajaCount__conteo">255</span>
-            <p class="cajaCount__modalidad">Proyecto de Grado</p>
+          <div class="cajaCount" caja-revistas>
+            <span class="cajaCount__conteo" contador-resvistas>255</span> <br>
+            <a href="" class="cajaCount__modalidad" caja-mod-revistas>Otros Recursos</a>
           </div>
         </div>
+
       </article>
       <article class="articlePag2">
         <h3 class="articlePag2__titleCajas">CARRERAS - CONTENIDOS</h3>
@@ -58,30 +59,36 @@
         </template>
       </article>
       <aside class="asidePag3">
-        <div class="cajaDesct">
+
+        <!-- contenidos desctacados -->
+        <div class="cajaDesct" container-cont-destacado>
           <h4 class="cajaDesct__titleDesct">Titulos Destacados</h4>
-          <div class="contentDesc">
-            <p class="contentDesc__tituloProy">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Aspernatur, necessitatibus.
-            </p>
-            <p class="contentDesc__Autor">Lorem, ipsum.</p>
           </div>
+          <template template-cont-destacado>
+            <div class="contentDesc">
+              <a class="contentDesc__tituloProy" destacado-title></a>
+              <p class="contentDesc__Autor" destacado-autor></p>
+          </template>
         </div>
-        <div class="cajaAño">
+
+        <!-- contenidos por gestion -->
+        <div class="cajaAño" container-contenido-año>
           <h4 class="cajaAño__Title">Año de Producción</h4>
-          <div class="contentAño">
-            <p class="contentAño__año">2020</p>
-            <p class="contentAño__recursos">26 recursos</p>
-          </div>
         </div>
+        <template template-contenido-año>
+          <div class="contentAño">
+            <a class="contentAño__año" href="#" contenido-año>2020</a>
+            <p class="contentAño__recursos" contenido-recurso>26 recursos</p>
+          </div>
+        </template>
+
     </section>
     <!-- Pie de pagina -->
     <footer class="footer">
       <ul class="footerLink">
-        <li><a class="footerLink__link" href="">Directorio</a>/li>
+        <li><a class="footerLink__link" href="">Directorio</a></li>
         <li><a class="footerLink__link" href="">Contacto</a></li>
-        <li> <a class="footerLink__link" href="">Normativa</a></li>
+        <li><a class="footerLink__link" href="">Normativa</a></li>
       </ul>
      
       <p class="footer__text">

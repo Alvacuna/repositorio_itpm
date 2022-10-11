@@ -11,7 +11,7 @@ const btnAutor = document.querySelector("[autor]");
 const btnGestion = document.querySelector("[gestion]");
 const btnTutor = document.querySelector("[tutor]");
 
-let stateFilter = 2;
+let stateFilter = 1;
 
 btnAll.addEventListener("click", (e) => {
   e.preventDefault();

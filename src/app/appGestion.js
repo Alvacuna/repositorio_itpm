@@ -3,18 +3,71 @@ const userCardTemplate = document.querySelector("[data-user-template]");
 const userCardContainer = document.querySelector("[data-user-cards-container]");
 const searchInput = document.querySelector("[data-search]");
 const searchFomr = document.querySelector("[search-form]");
+
+const btnAll = document.querySelector("[all]");
+const btnAutor = document.querySelector("[autor]");
+const btnGestion = document.querySelector("[gestion]");
+const btnTutor = document.querySelector("[tutor]");
+
+let stateFilter = 1;
+
+btnAll.addEventListener("click", (e) => {
+  e.preventDefault();
+  stateFilter = 1;
+});
+btnAutor.addEventListener("click", (e) => {
+  e.preventDefault();
+  stateFilter = 2;
+});
+btnGestion.addEventListener("click", (e) => {
+  e.preventDefault();
+  stateFilter = 3;
+});
+btnTutor.addEventListener("click", (e) => {
+  e.preventDefault();
+  stateFilter = 4;
+});
+
 let users = [];
 
 searchFomr.addEventListener("submit", (e) => {
   e.preventDefault();
   const value = e.target.search.value;
-  console.log(value);
-  users.forEach((user) => {
-    const IsVisible =
-      user.titulo.toLowerCase().includes(value.toLowerCase()) ||
-      user.nombre_autor.toLowerCase().includes(value.toLowerCase());
-    user.element.classList.toggle("hide", !IsVisible);
-  });
+  console.log(stateFilter);
+  switch (stateFilter) {
+    case 1:
+      users.forEach((user) => {
+        const IsVisible =
+          user.titulo.toLowerCase().includes(value.toLowerCase()) ||
+          user.nombre_autor.toLowerCase().includes(value.toLowerCase()) ||
+          user.carrers.toLowerCase().includes(value.toLowerCase());
+        user.element.classList.toggle("hide", !IsVisible);
+      });
+      break;
+    case 2:
+      users.forEach((user) => {
+        const IsVisible = user.nombre_autor
+          .toLowerCase()
+          .includes(value.toLowerCase());
+          
+        user.element.classList.toggle("hide", !IsVisible);
+      });
+      break;
+    case 3:
+      users.forEach((user) => {
+        const IsVisible =
+          user.gestion.toLowerCase().includes(value.toLowerCase())
+        user.element.classList.toggle("hide", !IsVisible);
+      });
+      break;
+    case 4:
+      users.forEach((user) => {
+        const IsVisible =
+          user.titulo.toLowerCase().includes(value.toLowerCase())
+        user.element.classList.toggle("hide", !IsVisible);
+      }); 
+     break;
+  }
 });
 function getGET() {
     let loc = document.location.href;

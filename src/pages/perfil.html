@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link rel="stylesheet" href="perfil/perfil.css"> -->
+    <link rel="stylesheet" href="stylesPages/perfil.css">
     <title>Document</title>
   </head>
   <body>
@@ -18,15 +19,46 @@
         </nav>
       </div>
     </header>
-    <h3>Gestronomia</h3>
+
+    <p nombre></p>
+    <p tutor></p>
+    <p gestion></p>
+    <p modalidad></p>
     <div class="user-cards" data-user-cards-container></div>
     <template data-user-template>
       <div class="card">
-        <a href="#" class="header" data-header></a>
+        <a href="#" class="heade" data-header></a>
         <div class="body" data-body></div>
       </div>
     </template>
-    <div prueba></div>
+    <div class="container-perfil">
+      <h2 class="title-carrera" carrera></h2>
+      <h2 class="title-proyecto" title-proyecto>titulo del proyecto</h2>
+      <div class="sub-container-perfil">
+        <img src="" alt="" width="150px" class="img-portada" portada>
+      <div class="container-link">
+        <h3 class="title-link" link-rescurso>Link del recurso</h3>
+        <a href="#" class="link-proyecto" target="_blank" linkDrive></a>
+      </div>
+      <div class="container-gestion">
+        <h3 class="title-gestion">Gestion</h3>
+        <p class="gestion">2001</p>
+      </div>
+      <div class="container-autor">
+        <h3 class="title-autor">Autor</h3>
+        <p class="nombre-autor" nombreAutor>Alvin Acuña</p>
+      </div>
+      <div class="container-tutor">
+        <h3 class="title-tutor">Tutor</h3>
+        <p class="nombre-tutor" nombreTutor>Erwin Savedra</p>
+      </div>
+      <div class="container-resumen">
+        <h3 class="title-resumen" >Resumen</h3>
+        <p class="resumen-text" resumenProyecto>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores placeat quam sint porro,
+          consequatur adipisci nisi error eaque animi neque tenetur totam quos inventore eius! Ea error quas cumque qui.</p>
+      </div>
+      </div>
+    </div>
   </body>
   <script src="../app/appPerfil.js" type="module"></script>
 </html>

@@ -7,7 +7,7 @@
 }
 /*HEADER*/
 .header {
-    background: #000;
+    background: #001219;
     padding: 10px;
     position: fixed;
     top: 0;
@@ -54,12 +54,13 @@
 .article::before {
     content: '';
     position: absolute;
+    background-attachment: fixed;
     width: 100%;
     height: 100%;
-    background-image: url("../img/itpm.jpg");
+    background-image: url("../img/fondo-repo.webp");
     background-size: cover;
     background-position: center;
-    filter: opacity(.5);
+    filter: contrast(100%);
     z-index: -1;
 }
 .article {
@@ -67,36 +68,42 @@
 }
 .article__nomInstitucion {
     padding: 60px 0px 30px 0px;
+    font-size: 30px;
     margin: auto;
-    color: red;
-    width: 290px;
+    color: blue;
+    width: 40%;
     text-align: center;
+    font-weight: 1000;
 }
 .article__presentacion {
     text-align: justify;
     width: 50%;
     margin: auto;
+    font-weight: 900;
+    font-size: 20px;
+    color: white;
 }
 .formBusc {
     width: 50%;
     margin: 60px auto;
     display: flex;
+    gap: 20px;
 }
 .formBusc__barra {
     width: 80%;
     margin: 0;
     padding: 0;
     border: #000 solid 1px;
-    border-radius: 0;
+    border-radius: 7px;
     height: 30px;
 }
 .formBusc__Button {
     font-weight: bolder;
     font-size: medium;
-    background-color: lightcoral;
+    background-color: #0a9396;
     width: 20%;
     margin: 0;
-    border-radius: 0;
+    border-radius: 9px;
     padding: 0;
     border: #000 solid 1px;
 }
@@ -114,8 +121,9 @@
     text-align: center;
     height: 125px;
     width: 250px;
-    background-color: lightgrey;
+    background-color: #ee9b00;
     padding: 25px 0;
+    border-radius: 5px;
 }
 .cajaCount__modalidad {
     margin: 20px 0;
@@ -142,6 +150,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    border-radius: 6px;
 }
 .cajasCarreras__links {
     width: 200px;
@@ -150,6 +159,7 @@
     text-align: center;
     padding: 55px 30px;
     transition: all 300ms;
+    border-radius: 6px;
 }
 .cajasCarreras__links:hover {
     background-color: #000;
@@ -167,8 +177,9 @@
     height: 200px;
     width: 280px;
     background-color: rgb(255, 187, 187);
-    border: #000 solid 1px;
+    border: rgb(163, 163, 163) solid 3px;
     overflow: auto;
+    border-radius: 9px;
 }
 .contentDesc__tituloProy {
     text-align: justify;

@@ -23,62 +23,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido a la Sesion</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-<form name="formu" action="subir_archivos.php" method="post" enctype="multipart/form-data">
-        <div>
-            <input type="text" name="autor" placeholder="autor" required>
+<main>
+        <div class="container__card">
+            <div class="card__principal">
+                <div class="card">
+                    <div class="card__front">
+                        <div class="body__card__front">
+                            <h1>Subida de Trabajos</h1>
+                        </div>
+                    </div>
+                    <div class="card__back">
+                        <div class="body__card__back">
+                            <p>Formulario para el registro de Trabajos y carga en Google Drive del documento</p>
+                            <a href="formularios/formulario.php"><input type="button" value="Ingresar"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card__principal">
+                <div class="card">
+                    <div class="card__front">
+                        <div class="body__card__front">
+                            <h1>Registro de Docentes</h1>
+                        </div>
+                    </div>
+                    <div class="card__back">
+                        <div class="body__card__back">
+                            <p>Formulario para el registro de ingreso para Docentes nuevos</p>
+                            <a href="formularios/docentes.php"><input type="button" value="Ingresar"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card__principal">
+                <div class="card">
+                    <div class="card__front">
+                        <div class="body__card__front">
+                            <h1>Registro de Carreras</h1>
+                        </div>
+                    </div>
+                    <div class="card__back">
+                        <div class="body__card__back">
+                            <p>Formulario para el registro de ingreso para Carreras nuevas en en ITPM</p>
+                            <a href="formularios/carreras.php"><input type="button" value="Ingresar"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <input type="text" name="apellido" placeholder="apellido">
-        </div>
-        <div>
-            <input type="text" name="resumen" placeholder="resumen" required>
-        </div>
-        <div>
-            <input type="text" name="gestion" placeholder="gestion" required>
-        </div>
-        <select name="tutor" id="">
-            <?php
-                $query = 'SELECT * FROM tutor';
-                $result = $mysqli->query($query);
-                while ($r = $result->fetch_assoc()) {
-                    ?>
-            <option value="<?= $r['id_tutor']; ?>"><?= $r['nombre_tutor']; ?></option>
-            <?php } ?>
-        </select>
-        <select name="modalidad" id="">
-            <?php
-                $query = 'SELECT * FROM modalidad';
-                $result = $mysqli->query($query);
-                while ($r = $result->fetch_assoc()) {
-                    ?>
-            <option value="<?= $r['id_mod']; ?>"><?= $r['tipo_documento']; ?></option>
-            <?php } ?>
-        </select>
-        <select name="carrera" id="">
-            <?php
-                $query = 'SELECT * FROM carreras';
-                $result = $mysqli->query($query);
-                while ($r = $result->fetch_assoc()) {
-                    ?>
-            <option value="<?= $r['id_carrera']; ?>"><?= $r['nombre_carrera']; ?></option>
-            <?php } ?>
-        </select>
-        <div>
-            <input type="file" onchange="return val()" name="archivos" accept=".pdf">
-        </div>
-        <input type="submit" value="enviar">
-    </form>
-    <a href="php/cerrar.php">Cerrar sesion</a>
-    <script>
-        function val() {
-    var arc = document.formu.archivos;
-    if(arc.files[0].type != "application/pdf"){
-        alert('Seleccione un archivo PDF');
-        arc.value='';
-    }
-}
-    </script>
+    </main>
+    <a href="php/cerrar.php"><input type="button" value="Cerrar sesion"></a>
 </body>
 </html>

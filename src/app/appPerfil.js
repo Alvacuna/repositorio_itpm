@@ -23,19 +23,35 @@ function getGET() {
 }
 
 console.log(getGET().id);
+const carrera = document.querySelector("[carrera]")
+const nombreAutor = document.querySelector("[nombreAutor]")
+const tutor = document.querySelector("[tutor]")
+const gestion = document.querySelector("[gesion]")
+const modalidad = document.querySelector("[modalidad]")
+const img = document.querySelector("[portada]")
+const titleProyect = document.querySelector("[title-proyecto]")
+const linkDrive = document.querySelector("[linkDrive]")
 getIdProyect(getGET().id).then((data) => {
   
   data.map((user) => {
-
+  
     const card = userCardTemplate.content.cloneNode(true).children[0];
     const header = card.querySelector("[data-header]");
     const body = card.querySelector("[data-body]");
-    console.log(card)
-    header.textContent = user.titulo;
-    body.textContent = user.resumen;
-    header.setAttribute("href", `./src/pages/perfil.html?id=${user.id_trabajos}`);
+    img.src = `../img/portadas/portada-mei.webp`
+    carrera.textContent= user.nombre_carrera
+    console.log(user.link_pdf)
+    titleProyect.textContent= user.titulo
+    linkDrive.textContent=user.link_pdf
+    linkDrive.setAttribute("href", user.link_pdf);
+    nombreAutor.textContent = user.nombre_autor + " " + user.apellido_autor
+
+
+
     userCardContainer.append(card);
     return { titulo: user.titulo, resumen: user.resumen, element: card };
   })
     
 });
+
+

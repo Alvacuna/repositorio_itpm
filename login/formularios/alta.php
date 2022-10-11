@@ -6,8 +6,8 @@
     $client->useApplicationDefaultCredentials();
     $client->SetScopes(['https://www.googleapis.com/auth/drive.file']);
     try {
-        $resumen = 'ABC';
-        $titulo = $_FILES['archivos']['name'];
+        $resumen = $_POST['resumen'];
+        $titulo = $_POST['titulo'];
         $apellido = $_POST['apellido'];
         $autor = $_POST['autor'];
         $tutor = $_POST['tutor'];

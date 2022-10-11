@@ -49,33 +49,50 @@
 .section {
     margin-top: 78px;
 }
+/* .search-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+} */
+
+input {
+    font-size: 1rem;
+}
+.formSearch {
+    width: 85%;
+    margin: 25px auto 0 auto;
+}
+.formSearch__input {
+    width: 60%;
+}
 
 
-/* tarjetas */
 
-* {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container-perfil {
-    width: 80%;
-  
+
+
+.user-cards {
+    width: 1200px;
     margin: auto;
-  
-  }
-  
-  .sub-container-perfil {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-  }
-  
-  .title-carrera {
-    border-bottom: 1px solid black;
-    padding-bottom: 5px;
-  }
-  
-  .title-proyecto {
-    padding-top: 10px;
-  }
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: .25rem;
+    margin-top: 1rem;       
+}
+
+.card {
+    width: 200px;
+    border: 1px solid black;
+    background-color: #777  ;
+    padding: .5rem;
+}   
+.card > .header {
+    margin-bottom: .25rem;
+}
+
+.card > .body {
+    font-size: .8rem;
+    color: #777;
+}
+.hide {
+    display: none;
+}

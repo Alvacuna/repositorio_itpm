@@ -8,9 +8,8 @@
 
 
 .header {
-    background: #000;
+    background: #1D3557;
     padding: 10px;
-    
     width: 100%;
 }
 .header__container, .header__title {
@@ -70,29 +69,66 @@ input {
 
 
 
+
 .user-cards {
-    width: 1200px;
+    min-width: 1200px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: .25rem;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 5px;
     margin-top: 1rem;       
 }
 
 .card {
     width: 200px;
-    border: 1px solid black;
-    background-color: #777  ;
-    padding: .5rem;
+    background-color: #457B9D;
 }   
-.card > .header {
+.card > .header-title {
     margin-bottom: .25rem;
 }
 
 .card > .body {
     font-size: .8rem;
-    color: #777;
+    color: #F1FAEE;
 }
 .hide {
     display: none;
+}
+.img-portada {
+    width: 200px;
+}
+
+
+
+/* container buttons */
+
+.container-buttons {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+
+}
+.container-buttons__title{
+    background-color: #457B9D;
+}
+.container-buttons__button {
+    height: 30px;
+    background: #F1FAEE;
+    border: 0.2px solid #1D3557;
+}
+.container-buttons__button:hover {
+    background: #457B9D;
+}
+.container-buttons__button:active {
+    background: #1D3557;
+}
+
+
+
+
+.container {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 20px;
 }

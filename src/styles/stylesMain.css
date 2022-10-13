@@ -7,7 +7,7 @@
 }
 /*HEADER*/
 .header {
-    background: #001219;
+    background: #1D3557;
     padding: 10px;
     position: fixed;
     top: 0;
@@ -57,10 +57,9 @@
     background-attachment: fixed;
     width: 100%;
     height: 100%;
-    background-image: url("../img/fondo-repo.webp");
+    background-image: url("../img/font-ocs.webp");
     background-size: cover;
     background-position: center;
-    filter: contrast(100%);
     z-index: -1;
 }
 .article {
@@ -70,7 +69,7 @@
     padding: 60px 0px 30px 0px;
     font-size: 30px;
     margin: auto;
-    color: blue;
+    color: #E63946;
     width: 40%;
     text-align: center;
     font-weight: 1000;
@@ -79,9 +78,9 @@
     text-align: justify;
     width: 50%;
     margin: auto;
-    font-weight: 900;
+    font-weight: 200;
     font-size: 20px;
-    color: white;
+    color: #F1FAEE;
 }
 .formBusc {
     width: 50%;
@@ -100,7 +99,7 @@
 .formBusc__Button {
     font-weight: bolder;
     font-size: medium;
-    background-color: #0a9396;
+    background-color: #457B9D;
     width: 20%;
     margin: 0;
     border-radius: 9px;
@@ -121,12 +120,16 @@
     text-align: center;
     height: 125px;
     width: 250px;
-    background-color: #ee9b00;
+    background-color: #A8DADC;
     padding: 25px 0;
     border-radius: 5px;
 }
+.cajaCount > a{
+    margin-top: 10px;
+    color: #1D3557;
+}
 .cajaCount__modalidad {
-    margin: 20px 0;
+    margin: 20px 0;     
 }
 .cajaCount__conteo {
     font-weight: bold;
@@ -136,7 +139,8 @@
 /*CARRERAS - CONTENIDOS*/
 .articlePag2 {
     padding: 30px 0px;
-    background: rgb(237, 237, 237);
+    /* background: rgb(237, 237, 237); */
+    background: #F1FAEE;
 }
 .articlePag2__titleCajas {
     margin: 10px 0px 30px 150px;
@@ -146,7 +150,7 @@
     margin: auto;
     padding: 10px;
     width: 65%;
-    background-color: lightgrey;
+    background-color: #A8DADC;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -155,11 +159,14 @@
 .cajasCarreras__links {
     width: 200px;
     margin: 20px 30px;
-    background-color: rgb(255, 187, 187);
+    background-color: #457B9D;
     text-align: center;
     padding: 55px 30px;
     transition: all 300ms;
     border-radius: 6px;
+}
+.cajasCarreras__links > a{
+    color: #F1FAEE;
 }
 .cajasCarreras__links:hover {
     background-color: #000;
@@ -176,17 +183,22 @@
     margin: 50px 0px;
     height: 200px;
     width: 280px;
-    background-color: rgb(255, 187, 187);
+    background-color: #1D3557;
     border: rgb(163, 163, 163) solid 3px;
     overflow: auto;
     border-radius: 9px;
+    color: #A8DADC;
 }
+.contentAño > a , .contentDesc > a{
+    color: #fff;
+}
+
 .contentDesc__tituloProy {
     text-align: justify;
 }
 .cajaDesct__titleDesct, .cajaAño__Title {
     font-weight: lighter;
-    color: crimson;
+    color: #E63946;
     margin: 15px;
 }
 .contentDesc, .contentAño {

@@ -29,32 +29,50 @@
     </header>
 
     <div class="search-wrapper">
-      <form search-form name="searchForm" class="formSearch"> 
-        <label for="search">Search Libros:</label>    
-        <input type="search" id="search" data-search name="search" class="formSearch__input" />
-        <button type="submit" id="active" class="formSearch__buton">Buscar</button>
+      <form search-form name="searchForm" class="formSearch">
+        <label for="search">Search Libros:</label>
+        <input
+          type="search"
+          id="search"
+          data-search
+          name="search"
+          class="formSearch__input"
+        />
+        <button type="submit" id="active" class="formSearch__buton">
+          Buscar
+        </button>
       </form>
-      <button type="button" all>All</button>
-      <button type="button" autor>Autor</button>
-      <button type="button" gestion>Gestion</button>
-      <button type="button" tutor>Titulo</button>
     </div>
-    <div class="user-cards" data-user-cards-container></div>
-    <template data-user-template>
-      <div class="card">
-        <img src="" alt="" width="150px" data-img />
-        <a href="#" class="header-title" data-header></a>
-        <div class="body" data-body></div>
-        <p data-gestion></p>
-        <p data-carrera></p>
-      </div>
-    </template>
-
-
-    <form action="">
-      <button  type="submit" class="anterior" >atras</button>
+    
+    <div class="container">
+      <aside class="container-buttons">
+        <p class="container-buttons__title">Navegar en todo el sitio</p>
+        <button type="button" class="container-buttons__button" all>All</button>
+        <button type="button" class="container-buttons__button" autor>
+          Autor
+        </button>
+        <button type="button" class="container-buttons__button" gestion>
+          Gestion
+        </button>
+        <button type="button" class="container-buttons__button" tutor>
+          Titulo
+        </button>
+      </aside>
+      <div class="user-cards" data-user-cards-container></div>
+      <template data-user-template>
+        <div class="card">
+          <img src="" alt="" width="150px" class="img-portada" loading="lazy" data-img />
+          <a href="#" class="header-title" data-header></a>
+          <div class="body" data-body></div>
+          <p data-gestion></p>
+          <p data-carrera></p>
+        </div>
+      </template>
+    </div>
+    <form action="" class="hide">
+      <button type="submit" class="anterior">atras</button>
       <label for="" class="count">1</label>
-      <button  type="submit" class="siguiente">siguiente</button>
+      <button type="submit" class="siguiente">siguiente</button>
     </form>
   </body>
   <script src="../app/app.js" type="module"></script>

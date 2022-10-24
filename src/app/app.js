@@ -1,4 +1,5 @@
 import { getAllProyects } from "../services/getAllProyects.js";
+import { getListGestion } from "../services/getListGestion.js";
 
 const userCardTemplate = document.querySelector("[data-user-template]");
 const userCardContainer = document.querySelector("[data-user-cards-container]");
@@ -64,9 +65,9 @@ setTimeout(() => {
 }, 200);
 
 console.log(searchInput.value);
-// const removeAccents = (str) => {
-//   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-// }
+const removeAccents = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 
 searchFomr.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -76,17 +77,17 @@ searchFomr.addEventListener("submit", (e) => {
     case 1:
       users.forEach((user) => {
         const IsVisible =
-          user.titulo.toLowerCase().includes(value.toLowerCase()) ||
-          user.nombre_autor.toLowerCase().includes(value.toLowerCase()) ||
-          user.carrers.toLowerCase().includes(value.toLowerCase());
+          removeAccents(user.titulo).toLowerCase().includes(removeAccents(value).toLowerCase()) ||
+          removeAccents(user.nombre_autor).toLowerCase().includes(removeAccents(value).toLowerCase()) ||
+          removeAccents(user.carrers).toLowerCase().includes(removeAccents(value).toLowerCase());
         user.element.classList.toggle("hide", !IsVisible);
       });
       break;
     case 2:
       users.forEach((user) => {
-        const IsVisible = user.nombre_autor
+        const IsVisible = removeAccents(user.nombre_autor) 
           .toLowerCase()
-          .includes(value.toLowerCase());
+          .includes(removeAccents(value).toLowerCase());
           
         user.element.classList.toggle("hide", !IsVisible);
       });
@@ -94,14 +95,14 @@ searchFomr.addEventListener("submit", (e) => {
     case 3:
       users.forEach((user) => {
         const IsVisible =
-          user.gestion.toLowerCase().includes(value.toLowerCase())
+          removeAccents(user.gestion).toLowerCase().includes(removeAccents(value).toLowerCase())
         user.element.classList.toggle("hide", !IsVisible);
       });
       break;
     case 4:
       users.forEach((user) => {
         const IsVisible =
-          user.titulo.toLowerCase().includes(value.toLowerCase())
+          removeAccents(user.titulo).toLowerCase().includes(removeAccents(value).toLowerCase())
         user.element.classList.toggle("hide", !IsVisible);
       }); 
      break;
@@ -183,14 +184,14 @@ getAllProyects().then((data) => {
     }
 
     header.textContent = user.titulo;
-    body.textContent = user.nombre_autor;
+    body.textContent = user.nombre_autor +" "+ user.apellido_autor;
     carrers.textContent = user.nombre_carrera;
     gestion.textContent = user.gestion;
     header.setAttribute("href", `../pages/perfil.html?id=${user.id_trabajos}`);
     userCardContainer.append(card);
     return {
       titulo: user.titulo,
-      nombre_autor: user.nombre_autor,
+      nombre_autor: user.nombre_autor +" "+ user.apellido_autor,
       carrers: user.nombre_carrera,
       gestion: user.gestion,
       element: card,
@@ -213,3 +214,44 @@ getAllProyects().then((data) => {
 //       return { title: user.title, resumen: user.resumen, element: card };
 //     });
 //   });
+
+
+
+
+//año de produccion
+let producciones = []
+const productTemplame = document.querySelector("[template-contenido-año]")
+const productContainer = document.querySelector("[container-contenido-año]")
+getListGestion().then((data) => {
+  producciones = data.map((dat) => {
+    const product = productTemplame.content.cloneNode(true).children[0];
+    console.log(dat)
+    const añoDeProduction = product.querySelector("[contenido-año]")
+    const recursoProduction = product.querySelector("[contenido-recurso]")
+    añoDeProduction.textContent = "Gestion: "+dat.gestion
+    recursoProduction.textContent = "Recursos: "+dat.cantidad
+    añoDeProduction.setAttribute("href", `../proyecto/src/pages/searchGestion.html?id=${dat.gestion}`)
+    productContainer.append(product)
+    return {gestion: dat.gestion, cantidad:dat.cantidad, element: product}
+  })
+})
+
+
+
+
+// Contenidos Destacados
+const descTemplate = document.querySelector("[template-cont-destacado]")
+const descContainer = document.querySelector("[container-cont-destacado]")
+getAllProyects().then((data) => {
+  data.slice(0, 3).map((dat) => {
+    console.log(dat)
+    const destacado = descTemplate.content.cloneNode(true).children[0]
+    const titleDesc = destacado.querySelector("[destacado-title]")
+    const autorDesc = destacado.querySelector("[destacado-autor]")
+    titleDesc.setAttribute("href", `../proyecto/src/pages/perfil.html?id=${dat.id_trabajos}`);
+    titleDesc.textContent= dat.titulo
+    autorDesc.textContent = dat.nombre_autor
+    descContainer.append(destacado)
+  })
+
+})

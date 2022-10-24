@@ -30,7 +30,7 @@
 
     <div class="search-wrapper">
       <form search-form name="searchForm" class="formSearch">
-        <label for="search">Search Libros:</label>
+        <label for="search">Buscar Libros:</label>
         <input
           type="search"
           id="search"
@@ -43,29 +43,60 @@
         </button>
       </form>
     </div>
-    
+
     <div class="container">
-      <aside class="container-buttons">
-        <p class="container-buttons__title">Navegar en todo el sitio</p>
-        <button type="button" class="container-buttons__button" all>All</button>
-        <button type="button" class="container-buttons__button" autor>
-          Autor
-        </button>
-        <button type="button" class="container-buttons__button" gestion>
-          Gestion
-        </button>
-        <button type="button" class="container-buttons__button" tutor>
-          Titulo
-        </button>
+      <aside class="sub-container">
+        <div class="container-buttons">
+          <p class="container-buttons__title">Navegar en todo el sitio</p>
+          <button type="button" class="container-buttons__button" all>
+            All
+          </button>
+          <button type="button" class="container-buttons__button" autor>
+            Autor
+          </button>
+          <button type="button" class="container-buttons__button" gestion>
+            Gestion
+          </button>
+          <button type="button" class="container-buttons__button" tutor>
+            Titulo
+          </button>
+        </div>
+
+        <div class="cajaDesct" container-cont-destacado>
+          <h4 class="cajaDesct__titleDesct">Titulos Destacados</h4>
+        </div>
+        <template template-cont-destacado>
+          <div class="contentDesc">
+            <a class="contentDesc__tituloProy" destacado-title></a>
+            <p class="contentDesc__Autor" destacado-autor></p>
+          </div>
+        </template>
+
+        <div class="cajaAño" container-contenido-año>
+          <h4 class="cajaAño__Title">Año de Producción</h4>
+        </div>
+        <template template-contenido-año>
+          <div class="contentAño">
+            <a class="contentAño__año" href="#" contenido-año></a>
+            <p class="contentAño__recursos" contenido-recurso></p>
+          </div>
+        </template>
       </aside>
       <div class="user-cards" data-user-cards-container></div>
       <template data-user-template>
         <div class="card">
-          <img src="" alt="" width="150px" class="img-portada" loading="lazy" data-img />
-          <a href="#" class="header-title" data-header></a>
-          <div class="body" data-body></div>
-          <p data-gestion></p>
-          <p data-carrera></p>
+          <img
+            src=""
+            alt=""
+            width="150px"
+            class="img-portada"
+            loading="lazy"
+            data-img
+          />
+          <a href="#" class="header-title card__title" data-header></a>
+          <div class="body card__autor" data-body></div>
+          <p class="card__gestion" data-gestion></p>
+          <p class="card__carrera" data-carrera></p>
         </div>
       </template>
     </div>

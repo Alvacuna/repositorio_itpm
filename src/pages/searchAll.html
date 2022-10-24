@@ -30,13 +30,14 @@
 
     <div class="search-wrapper">
       <form search-form name="searchForm" class="formSearch">
-        <label for="search">Buscar Libros:</label>
+        <label for="search" class="label__input">Buscar Libros:</label>
         <input
           type="search"
           id="search"
           data-search
           name="search"
           class="formSearch__input"
+          placeholder="Articulos, Trabajos de grado"
         />
         <button type="submit" id="active" class="formSearch__buton">
           Buscar
@@ -57,13 +58,13 @@
           <button type="button" class="container-buttons__button" gestion>
             Gestion
           </button>
-          <button type="button" class="container-buttons__button" tutor>
+          <button type="button" class="container-buttons__button container-buttons__button--border" tutor>
             Titulo
           </button>
         </div>
 
         <div class="cajaDesct" container-cont-destacado>
-          <h4 class="cajaDesct__titleDesct">Titulos Destacados</h4>
+          <h4 class="cajaDesct__titleDesct">Titulos Recientes</h4>
         </div>
         <template template-cont-destacado>
           <div class="contentDesc">

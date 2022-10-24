@@ -155,28 +155,28 @@ getAllProyects().then((data) => {
     const gestion = card.querySelector("[data-gestion]");
     switch (parseInt(user.id_carrera)) {
       case 1:
-        img.src = `../img/portadas/portada-mei.webp`;
+        img.src = `../img/portadas/port-mei.webp`;
         break;
       case 2:
-        img.src = `../img/portadas/portada-maz.webp`;
+        img.src = `../img/portadas/port-maz.webp`;
         break;
       case 3:
-        img.src = `../img/portadas/portada-ina.webp`;
+        img.src = `../img/portadas/port-ina.webp`;
         break;
       case 4:
-        img.src = `../img/portadas/portada-sif.webp`;
+        img.src = `../img/portadas/port-sif.webp`;
         break;
       case 5:
-        img.src = `../img/portadas/portada-gtr.webp`;
+        img.src = `../img/portadas/port-gtr.webp`;
         break;
       case 6:
-        img.src = `../img/portadas/portada-elect.webp`;
+        img.src = `../img/portadas/port-elect.webp`;
         break;
       case 7:
-        img.src = `../img/portadas/portada-maz-corpa.webp`;
+        img.src = `../img/portadas/port-maz-corp.webp`;
         break;
       case 8:
-        img.src = `../img/portadas/portada-agr.webp`;
+        img.src = `../img/portadas/port-agr.webp`;
         break;
       default:
         console.log("hola" + id_carr);
@@ -230,7 +230,7 @@ getListGestion().then((data) => {
     const recursoProduction = product.querySelector("[contenido-recurso]")
     añoDeProduction.textContent = "Gestion: "+dat.gestion
     recursoProduction.textContent = "Recursos: "+dat.cantidad
-    añoDeProduction.setAttribute("href", `../proyecto/src/pages/searchGestion.html?id=${dat.gestion}`)
+    añoDeProduction.setAttribute("href", `../pages/searchGestion.html?id=${dat.gestion}`)
     productContainer.append(product)
     return {gestion: dat.gestion, cantidad:dat.cantidad, element: product}
   })
@@ -243,14 +243,15 @@ getListGestion().then((data) => {
 const descTemplate = document.querySelector("[template-cont-destacado]")
 const descContainer = document.querySelector("[container-cont-destacado]")
 getAllProyects().then((data) => {
-  data.slice(0, 3).map((dat) => {
+  console.log(data.length)
+  data.slice((data.length - 5), data.length).map((dat) => {
     console.log(dat)
     const destacado = descTemplate.content.cloneNode(true).children[0]
     const titleDesc = destacado.querySelector("[destacado-title]")
     const autorDesc = destacado.querySelector("[destacado-autor]")
-    titleDesc.setAttribute("href", `../proyecto/src/pages/perfil.html?id=${dat.id_trabajos}`);
+    titleDesc.setAttribute("href", `../pages/perfil.html?id=${dat.id_trabajos}`);
     titleDesc.textContent= dat.titulo
-    autorDesc.textContent = dat.nombre_autor
+    autorDesc.textContent = dat.nombre_autor + " " +dat.apellido_autor
     descContainer.append(destacado)
   })
 

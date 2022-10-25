@@ -264,8 +264,9 @@ input {
   border-radius: 9px;
   color: #a8dadc;
   border: 1px solid black;
-  scrollbar-width: thin;
 }
+
+
 .contentAño > a,
 .contentDesc > a {
   color: #fff;

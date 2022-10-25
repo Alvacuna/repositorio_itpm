@@ -25,29 +25,59 @@ function getGET() {
 console.log(getGET().id);
 const carrera = document.querySelector("[carrera]")
 const nombreAutor = document.querySelector("[nombreAutor]")
-const tutor = document.querySelector("[tutor]")
-const gestion = document.querySelector("[gesion]")
+const tutor = document.querySelector("[nombreTutor]")
+const gestion = document.querySelector("[gestion]")
 const modalidad = document.querySelector("[modalidad]")
 const img = document.querySelector("[portada]")
 const titleProyect = document.querySelector("[title-proyecto]")
 const linkDrive = document.querySelector("[linkDrive]")
+const resumen = document.querySelector("[resumenProyecto]")
 getIdProyect(getGET().id).then((data) => {
   
   data.map((user) => {
-  
+    console.log(user)
     const card = userCardTemplate.content.cloneNode(true).children[0];
     const header = card.querySelector("[data-header]");
     const body = card.querySelector("[data-body]");
-    img.src = `../img/portadas/portada-mei.webp`
+    switch (parseInt(user.id_carrera)) {
+      case 1:
+        img.src = `../img/portadas/port-mei.webp`;
+        break;
+      case 2:
+        img.src = `../img/portadas/port-maz.webp`;
+        break;
+      case 3:
+        img.src = `../img/portadas/port-ina.webp`;
+        break;
+      case 4:
+        img.src = `../img/portadas/port-sif.webp`;
+        break;
+      case 5:
+        img.src = `../img/portadas/port-gtr.webp`;
+        break;
+      case 6:
+        img.src = `../img/portadas/port-elect.webp`;
+        break;
+      case 7:
+        img.src = `../img/portadas/port-maz-corp.webp`;
+        break;
+      case 8:
+        img.src = `../img/portadas/port-agr.webp`;
+        break;
+      default:
+        console.log("hola" + id_carr);
+        break;
+    }
     carrera.textContent= user.nombre_carrera
     console.log(user.link_pdf)
     titleProyect.textContent= user.titulo
     linkDrive.textContent=user.link_pdf
     linkDrive.setAttribute("href", user.link_pdf);
     nombreAutor.textContent = user.nombre_autor + " " + user.apellido_autor
-
-
-
+    tutor.textContent = user.nombre_tutor + " " + user.apellido_tutor
+    gestion.textContent = user.gestion
+    resumen.textContent = user.resumen
+    console.log(user.gestion)
     userCardContainer.append(card);
     return { titulo: user.titulo, resumen: user.resumen, element: card };
   })

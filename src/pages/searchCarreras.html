@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesPages/searchCarreras.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesPages/searchCarreras.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header">
       <div class="header__container">
         <a href="../../index.html" class="header__title"
@@ -15,7 +15,7 @@
             width="40px"
             title="hola"
             class="header__logo"
-            src="../img/logo_ITPM.png"
+            src="../img/logo_ITPM.webp"
           />
           <p class="title">REPOSITORIO ACADEMICO DE EL ITPM</p></a
         >
@@ -28,33 +28,81 @@
     </header>
 
     <div class="search-wrapper">
-      <form search-form name="searchForm" class="formSearch"> 
-        <label for="search">Search Libros:</label>    
-        <input type="search" id="search" data-search name="search" class="formSearch__input" />
-        <button type="submit" id="active" class="formSearch__buton">Buscar</button>
+      <form search-form name="searchForm" class="formSearch">
+        <label for="search">Search Libros:</label>
+        <input
+          type="search"
+          id="search"
+          data-search
+          name="search"
+          class="formSearch__input"
+        />
+        <button type="submit" id="active" class="formSearch__buton">
+          Buscar
+        </button>
       </form>
-      <button type="button" all>All</button>
-      <button type="button" autor>Autor</button>
-      <button type="button" gestion>Gestion</button>
-      <button type="button" tutor>Titulo</button>
     </div>
-    <div class="user-cards" data-user-cards-container></div>
-    <template data-user-template>
-      <div class="card">
-        <img src="" alt="" width="150px" data-img />
-        <a href="#" class="header-title" data-header></a>
-        <div class="body" data-body></div>
-        <p data-gestion></p>
-        <p data-carrera></p>
-      </div>
-    </template>
+    <div class="container">
+      <aside class="sub-container">
+        <div class="container-buttons">
+          <p class="container-buttons__title">Navegar en todo el sitio</p>
+          <button type="button" class="container-buttons__button" all>
+            All
+          </button>
+          <button type="button" class="container-buttons__button" autor>
+            Autor
+          </button>
+          <button type="button" class="container-buttons__button" gestion>
+            Gestion
+          </button>
+          <button
+            type="button"
+            class="container-buttons__button container-buttons__button--border"
+            tutor
+          >
+            Titulo
+          </button>
+        </div>
 
+        <div class="cajaDesct" container-cont-destacado>
+          <h4 class="cajaDesct__titleDesct">Titulos Recientes</h4>
+        </div>
+        <template template-cont-destacado>
+          <div class="contentDesc">
+            <a class="contentDesc__tituloProy" destacado-title></a>
+            <p class="contentDesc__Autor" destacado-autor></p>
+          </div>
+        </template>
 
-    <form action="">
-      <button  type="submit" class="anterior" >atras</button>
-      <label for="" class="count">1</label>
-      <button  type="submit" class="siguiente">siguiente</button>
-    </form>
+        <div class="cajaAño" container-contenido-año>
+          <h4 class="cajaAño__Title">Año de Producción</h4>
+        </div>
+        <template template-contenido-año>
+          <div class="contentAño">
+            <a class="contentAño__año" href="#" contenido-año></a>
+            <p class="contentAño__recursos" contenido-recurso></p>
+          </div>
+        </template>
+      </aside>
+
+      <div class="user-cards" data-user-cards-container></div>
+      <template data-user-template>
+        <div class="card">
+          <img
+            src=""
+            alt=""
+            width="150px"
+            class="img-portada"
+            loading="lazy"
+            data-img
+          />
+          <a href="#" class="header-title card__title" data-header></a>
+          <div class="body card__autor" data-body></div>
+          <p class="card__gestion" data-gestion></p>
+          <p class="card__carrera" data-carrera></p>
+        </div>
+      </template>
+    </div>
   </body>
   <script src="../app/appCarreras.js" type="module"></script>
 </html>

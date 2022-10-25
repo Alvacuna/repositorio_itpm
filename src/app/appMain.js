@@ -2,7 +2,8 @@ import { getAllCarreras } from "../services/getAllCarreras.js";
 import { getTrabajosGrado } from "../services/getTrabajosGrado.js";
 import { getCountRevistas } from "../services/getCountRevistas.js";
 import { getListGestion } from "../services/getListGestion.js";
-import { getAllProyects } from "../services/getAllProyects.js";
+
+import { getContReciente } from "../services/getContReciente.js";
 const searchFormAll = document.querySelector('[search-form-all]')
 
 
@@ -74,8 +75,8 @@ getListGestion().then((data) => {
 // Contenidos Destacados
 const descTemplate = document.querySelector("[template-cont-destacado]")
 const descContainer = document.querySelector("[container-cont-destacado]")
-getAllProyects().then((data) => {
-  data.slice(0, 3).map((dat) => {
+getContReciente().then((data) => {
+  data.map((dat) => {
     const destacado = descTemplate.content.cloneNode(true).children[0]
     const titleDesc = destacado.querySelector("[destacado-title]")
     const autorDesc = destacado.querySelector("[destacado-autor]")

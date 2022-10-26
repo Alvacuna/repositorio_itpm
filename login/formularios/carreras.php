@@ -20,6 +20,5 @@
         <input type="submit" value="Enviar" class="boton">
         <a href="javascript: history.go(-1)"><input type="button" value="Regresar" class="boton"></a>
     </form>
-    <script src="../js/main.js"></script>
 </body>
 </html>

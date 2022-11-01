@@ -130,12 +130,12 @@ getIdGestion(getGET().id).then((data) => {
       }
   
       header.textContent = user.titulo;
-      body.textContent = user.nombre_autor;
+      body.textContent = user.nombre_autor + " " + user.apellido_autor;
       carrers.textContent = user.nombre_carrera;
       gestion.textContent = user.gestion
       header.setAttribute("href", `../pages/perfil.html?id=${user.id_trabajos}`);
       userCardContainer.append(card);
-      return { titulo: user.titulo, nombre_autor: user.nombre_autor, carrers: user.nombre_carrera,gestion: user.gestion, element: card };
+      return { titulo: user.titulo, nombre_autor: user.nombre_autor + " " + user.apellido_autor, carrers: user.nombre_carrera,gestion: user.gestion, element: card };
       })
 });
 

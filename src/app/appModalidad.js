@@ -54,8 +54,6 @@ function getGET() {
   }
 }
 
-
-
 searchFomr.addEventListener("submit", (e) => {
   e.preventDefault();
   const value = e.target.search.value;
@@ -75,38 +73,35 @@ searchFomr.addEventListener("submit", (e) => {
         const IsVisible = user.nombre_autor
           .toLowerCase()
           .includes(value.toLowerCase());
-          
+
         user.element.classList.toggle("hide", !IsVisible);
       });
       break;
     case 3:
       users.forEach((user) => {
-        const IsVisible =
-          user.gestion.toLowerCase().includes(value.toLowerCase())
+        const IsVisible = user.gestion
+          .toLowerCase()
+          .includes(value.toLowerCase());
         user.element.classList.toggle("hide", !IsVisible);
       });
       break;
     case 4:
       users.forEach((user) => {
-        const IsVisible =
-          user.titulo.toLowerCase().includes(value.toLowerCase())
+        const IsVisible = user.titulo
+          .toLowerCase()
+          .includes(value.toLowerCase());
         user.element.classList.toggle("hide", !IsVisible);
-      }); 
-     break;
+      });
+      break;
   }
 });
 let contadoSup = 2;
 let contadoInf = 0;
 sig.addEventListener("click", (e) => {
   e.preventDefault();
-
 });
 
-
-
 getExcluMod(getGET().id).then((data) => {
-
-
   users = data.map((user) => {
     const card = userCardTemplate.content.cloneNode(true).children[0];
     const header = card.querySelector("[data-header]");
@@ -144,14 +139,14 @@ getExcluMod(getGET().id).then((data) => {
         break;
     }
     header.textContent = user.titulo;
-    body.textContent = user.nombre_autor;
+    body.textContent = user.nombre_autor + " " + user.apellido_autor;
     carrers.textContent = user.nombre_carrera;
     gestion.textContent = user.gestion;
     header.setAttribute("href", `../pages/perfil.html?id=${user.id_trabajos}`);
     userCardContainer.append(card);
     return {
       titulo: user.titulo,
-      nombre_autor: user.nombre_autor,
+      nombre_autor: user.nombre_autor + " " + user.apellido_autor,
       carrers: user.nombre_carrera,
       gestion: user.gestion,
       element: card,

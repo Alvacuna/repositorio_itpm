@@ -8,6 +8,7 @@ if (isset($_GET['id'])) {
     FROM trabajos_institucionales AS ti,autor AS a, tutor AS t, 
         trabajos_autor AS ta,trabajos_tutor AS tt, carreras AS c
         WHERE  ta.id_trabajos = ti.id_trabajos
+            GROUP BY ti.id_trabajos
             AND ta.id_autor = a.id_autor
             AND tt.id_trabajos = ti.id_trabajos
             AND tt.id_tutor = t.id_tutor

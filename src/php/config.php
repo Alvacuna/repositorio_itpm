@@ -33,7 +33,8 @@ if (isset($_GET['id'])) {
             AND ta.id_autor = a.id_autor
             AND tt.id_trabajos = ti.id_trabajos
             AND tt.id_tutor = t.id_tutor
-            AND ti.id_carrera = c.id_carrera";
+            AND ti.id_carrera = c.id_carrera
+            group by ti.id_trabajos";
     $resultado = mysqli_query($conexion, $sql);
     $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 

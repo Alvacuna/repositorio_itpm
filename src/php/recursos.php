@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
 } else {
   $sql = "SELECT count(id_mod) AS cantidad 
 FROM trabajos_institucionales 
-  WHERE  id_mod != 5";
+  WHERE  id_mod != 3";
   $resultado = mysqli_query($conexion, $sql);
   $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 

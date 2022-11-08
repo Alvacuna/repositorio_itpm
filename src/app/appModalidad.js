@@ -95,11 +95,6 @@ searchFomr.addEventListener("submit", (e) => {
       break;
   }
 });
-let contadoSup = 2;
-let contadoInf = 0;
-sig.addEventListener("click", (e) => {
-  e.preventDefault();
-});
 
 getExcluMod(getGET().id).then((data) => {
   users = data.map((user) => {

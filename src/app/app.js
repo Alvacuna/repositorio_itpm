@@ -123,16 +123,7 @@ searchFomr.addEventListener("submit", (e) => {
       break;
   }
 });
-let contadoSup = 2;
-let contadoInf = 0;
-sig.addEventListener("click", (e) => {
-  e.preventDefault();
 
-  // let contador = 0
-  // users.map((user, i) => {
-  //   (user.element.className === "card") ? console.log("se ve "+ i) : console.log("no se ve " + i)
-  // })
-});
 
 // const getAllProyects = () => {
 //   return fetch("php/config.php")

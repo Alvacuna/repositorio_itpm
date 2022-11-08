@@ -31,9 +31,7 @@ btnTutor.addEventListener("click", (e) => {
   stateFilter = 4;
 });
 
-const sig = document.querySelector(".siguiente");
-const ant = document.querySelector(".anterior");
-const count = document.querySelector(".count");
+
 
 let users = [];
 
@@ -94,12 +92,6 @@ searchFomr.addEventListener("submit", (e) => {
       }); 
      break;
   }
-});
-let contadoSup = 2;
-let contadoInf = 0;
-sig.addEventListener("click", (e) => {
-  e.preventDefault();
-
 });
 
 

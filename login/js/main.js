@@ -17,8 +17,8 @@ function val() {
 /* Select de Año dinámico */
 const gestion = new Date().getFullYear();
 for (let i = gestion; i >= 1998; i--) {
-    document.querySelector('#gestion').insertAdjacentHTML("beforeend", `<option value="${i} - II">${i} - II</option>`);
-    document.querySelector('#gestion').insertAdjacentHTML("beforeend", `<option value="${i} - I">${i} - I</option>`);
+    document.querySelector('#gestion').insertAdjacentHTML("beforeend", `<option value="${i}-II">${i} - II</option>`);
+    document.querySelector('#gestion').insertAdjacentHTML("beforeend", `<option value="${i}-I">${i} - I</option>`);
 }
 /* Inputs dinámicos para autor */
 const contenedor = document.querySelector('#dinamic');

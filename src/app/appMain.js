@@ -34,7 +34,7 @@ const linkTrabajoDeGrado = document.querySelector("[caja-modalidad]")
 getTrabajosGrado().then((data) =>  {
   data.map((data)=> {
     countTrabajoDeGrado.textContent= data.cantidad
-    linkTrabajoDeGrado.setAttribute("href", `../proyecto/src/pages/searchModalidad.html?id=5`)
+    linkTrabajoDeGrado.setAttribute("href", `../proyecto/src/pages/searchModalidad.html?id=3`)
   })
 })
 
@@ -45,7 +45,7 @@ const linkRevistas = document.querySelector("[caja-mod-revistas]")
 getCountRevistas().then((data) => {
   data.map((dat) => {
     countRevistas.textContent = dat.cantidad
-    linkRevistas.setAttribute("href", `../proyecto/src/pages/searchRevistas.html?id=5`)
+    linkRevistas.setAttribute("href", `../proyecto/src/pages/searchRevistas.html?id=3`)
   })
 })
 
@@ -62,7 +62,7 @@ getListGestion().then((data) => {
     const recursoProduction = product.querySelector("[contenido-recurso]")
     añoDeProduction.textContent = "Gestion: "+dat.gestion
     recursoProduction.textContent = "Recursos: "+dat.cantidad
-    añoDeProduction.setAttribute("href", `../proyecto/src/pages/searchGestion.html?id=${dat.gestion}`)
+    añoDeProduction.setAttribute("href", `../proyecto/src/pages/searchGestion.html?id="${dat.gestion}"`)
     productContainer.append(product)
     return {gestion: dat.gestion, cantidad:dat.cantidad, element: product}
   })

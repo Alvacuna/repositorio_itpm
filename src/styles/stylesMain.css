@@ -50,6 +50,11 @@
     margin-top: 78px;
 }
 
+
+
+
+
+
 /*BUSQUEDA*/
 .article::before {
     content: '';
@@ -79,7 +84,7 @@
     width: 50%;
     margin: auto;
     font-weight: 200;
-    font-size: 20px;
+    font-size: 15px;
     color: #F1FAEE;
 }
 .formBusc {
@@ -117,7 +122,10 @@
     flex-wrap: wrap;
 }
 .cajaCount {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
     height: 125px;
     width: 250px;
     background-color: #A8DADC;
@@ -135,6 +143,9 @@
     font-weight: bold;
     font-size: x-large;
 }
+
+
+
 
 /*CARRERAS - CONTENIDOS*/
 .articlePag2 {
@@ -229,4 +240,49 @@
     margin: auto;
     padding: 10px;
     text-align: justify;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .article {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: center;
+        gap: 0;
+    }
+    .article__nomInstitucion {
+        font-size: 25px;
+        width: 600px;
+        min-width: 370px;
+        padding-top: 15px;
+    }
+    .article__presentacion{
+        width: 340px;
+        height: 120px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        display: block;
+    }
+    .formBusc {
+
+        width: 340px;
+
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+    .formBusc__Button{
+        height: 30px;
+    }
+
+    .containerCajas {
+
+        margin: 0 0;
+        gap: 10px;
+    }
+    .footer__text{
+        text-align: center;
+    }
 }

@@ -2,6 +2,7 @@ import { getExcluMod } from "../services/getExcluMod.js";
 import { getAllProyects } from "../services/getAllProyects.js";
 import { getListGestion } from "../services/getListGestion.js";
 import { getContReciente } from "../services/getContReciente.js";
+import { removeAccents } from "./removeAccents.js";
 const userCardTemplate = document.querySelector("[data-user-template]");
 const userCardContainer = document.querySelector("[data-user-cards-container]");
 const searchInput = document.querySelector("[data-search]");
@@ -62,34 +63,40 @@ searchFomr.addEventListener("submit", (e) => {
     case 1:
       users.forEach((user) => {
         const IsVisible =
-          user.titulo.toLowerCase().includes(value.toLowerCase()) ||
-          user.nombre_autor.toLowerCase().includes(value.toLowerCase()) ||
-          user.carrers.toLowerCase().includes(value.toLowerCase());
+          removeAccents(user.titulo)
+            .toLowerCase()
+            .includes(removeAccents(value).trim().toLowerCase()) ||
+          removeAccents(user.nombre_autor)
+            .toLowerCase()
+            .includes(removeAccents(value).trim().toLowerCase()) ||
+          removeAccents(user.carrers)
+            .toLowerCase()
+            .includes(removeAccents(value).trim().toLowerCase());
         user.element.classList.toggle("hide", !IsVisible);
       });
       break;
     case 2:
       users.forEach((user) => {
-        const IsVisible = user.nombre_autor
+        const IsVisible = removeAccents(user.nombre_autor)
           .toLowerCase()
-          .includes(value.toLowerCase());
+          .includes(removeAccents(value).trim().toLowerCase());
 
         user.element.classList.toggle("hide", !IsVisible);
       });
       break;
     case 3:
       users.forEach((user) => {
-        const IsVisible = user.gestion
+        const IsVisible = removeAccents(user.gestion)
           .toLowerCase()
-          .includes(value.toLowerCase());
+          .includes(removeAccents(value).trim().toLowerCase());
         user.element.classList.toggle("hide", !IsVisible);
       });
       break;
     case 4:
       users.forEach((user) => {
-        const IsVisible = user.titulo
+        const IsVisible = removeAccents(user.titulo)
           .toLowerCase()
-          .includes(value.toLowerCase());
+          .includes(removeAccents(value).trim().toLowerCase());
         user.element.classList.toggle("hide", !IsVisible);
       });
       break;
@@ -106,42 +113,42 @@ getExcluMod(getGET().id).then((data) => {
     const gestion = card.querySelector("[data-gestion]");
     switch (parseInt(user.id_carrera)) {
       case 1:
-        img.src = `../img/portadas/port-mei.webp`;
-        break;
-      case 2:
-        img.src = `../img/portadas/port-maz.webp`;
-        break;
-      case 3:
-        img.src = `../img/portadas/port-ina.webp`;
-        break;
-      case 4:
         img.src = `../img/portadas/port-sif.webp`;
         break;
-      case 5:
-        img.src = `../img/portadas/port-gtr.webp`;
+      case 2:
+        img.src = `../img/portadas/port-mei.webp`;
         break;
-      case 6:
+      case 3:
+        img.src = `../img/portadas/port-maz.webp`;
+        break;
+      case 4:
+        img.src = `../img/portadas/port-ina.webp`;
+        break;
+      case 5:
         img.src = `../img/portadas/port-elect.webp`;
         break;
+      case 6:
+        img.src = `../img/portadas/port-gtr.webp`;
+        break;
       case 7:
-        img.src = `../img/portadas/port-maz-corp.webp`;
+        img.src = `../img/portadas/port-agr.webp`;
         break;
       case 8:
-        img.src = `../img/portadas/port-agr.webp`;
+        img.src = `../img/portadas/port-maz-corp.webp`;
         break;
       default:
         console.log("hola" + id_carr);
         break;
     }
     header.textContent = user.titulo;
-    body.textContent = user.nombre_autor + " " + user.apellido_autor;
+    body.textContent = user.nombreConcat;
     carrers.textContent = user.nombre_carrera;
     gestion.textContent = user.gestion;
     header.setAttribute("href", `../pages/perfil.html?id=${user.id_trabajos}`);
     userCardContainer.append(card);
     return {
       titulo: user.titulo,
-      nombre_autor: user.nombre_autor + " " + user.apellido_autor,
+      nombre_autor: user.nombreConcat,
       carrers: user.nombre_carrera,
       gestion: user.gestion,
       element: card,
@@ -185,7 +192,7 @@ getContReciente().then((data) => {
       `../pages/perfil.html?id=${dat.id_trabajos}`
     );
     titleDesc.textContent = dat.titulo;
-    autorDesc.textContent = dat.nombre_autor + " " + dat.apellido_autor;
+    autorDesc.textContent = dat.nombreConcat;
     descContainer.append(destacado);
   });
 });

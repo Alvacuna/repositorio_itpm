@@ -1,4 +1,17 @@
-<?php require_once 'conexion.php'; ?>
+<?php
+    session_start();
+    if (!isset ($_SESSION['usuario'])){
+        echo '
+        <script>
+        alert ("Debes iniciar sesion");
+        window.location = "../index.php";
+        </script>
+        ';
+        session_destroy();
+        die();
+    }
+    require_once 'conexion.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,8 +29,8 @@
                 <h3>Información de Autor (es)</h3>
                 <div class="autor" id="autor">
                     <div class="form__group grupo">
-                        <input id="autor" class="form__input" type="text" name="nombresa[]" placeholder=" " required>
-                        <label for="autor" class="form__label">Nombre</label>
+                        <input id="nombre" class="form__input" type="text" name="nombresa[]" placeholder=" " required>
+                        <label for="nombre" class="form__label">Nombre</label>
                     </div>
                     <div class="form__group grupo">
                         <input id="apellido" class="form__input" type="text" name="apellidosa[]" placeholder=" " required>

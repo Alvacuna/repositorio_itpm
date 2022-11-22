@@ -1,7 +1,18 @@
 <?php
+session_start();
+if (!isset ($_SESSION['usuario'])){
+    echo '
+    <script>
+    alert ("Debes iniciar sesion");
+    window.location = "../index.php";
+    </script>
+    ';
+    session_destroy();
+    die();
+}
 require 'conexion.php';
 include 'apidrive/vendor/autoload.php';
-putenv('GOOGLE_APPLICATION_CREDENTIALS=subir-archivos-1-73e866de05c4.json');
+putenv('GOOGLE_APPLICATION_CREDENTIALS=subir-archivos-1-369413-028b5af1d15b.json');
 $client = new Google_Client();
 $client->useApplicationDefaultCredentials();
 $client->SetScopes(['https://www.googleapis.com/auth/drive.file']);
@@ -20,8 +31,8 @@ try {
     $modalidad = $_POST['modalidad'];
     $carrera = $_POST['carrera'];
     if (preg_match($patron_texto_f, $tit) && preg_match($patron_texto_f, $res)) {
-        $titulo = ucfirst(ltrim(rtrim($tit)));
-        $resumen = ucfirst(ltrim(rtrim($res)));
+        $titulo = mb_strtoupper(ltrim(rtrim($tit)));
+        $resumen = ucfirst(mb_strtolower(ltrim(rtrim($res))));
         $sql = "SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo'";
         $mysqli->query($sql);
         if ($mysqli->affected_rows <= 0) {
@@ -31,7 +42,7 @@ try {
             $mime_type = finfo_file($finfo, $file_path);
             $file = new Google_Service_Drive_DriveFile();
             $file->setName($titulo);
-            $file->setParents(array("18WrywNyRQ3AAQU1xJMf-jZgTashyy45Y"));
+            $file->setParents(array("1nk5Gvgokxgg-sJy7tsFXo44aS75U3JHA"));
             $file->setMimeType($mime_type);
             $resultado = $service->files->create($file, array('data' => file_get_contents($file_path), 'mimeType' => $mime_type, 'uploadType' => 'media'));
             $ruta = 'https://drive.google.com/open?id=' . $resultado->id;
@@ -49,8 +60,8 @@ try {
             $nom = filter_var($n, FILTER_SANITIZE_STRING);
             $ape = filter_var($a, FILTER_SANITIZE_STRING);
             if (preg_match($patron_texto, $nom) && preg_match($patron_texto, $ape)) {
-                $nombre = ucwords(ltrim(rtrim($nom)));
-                $apellido = ucwords(ltrim(rtrim($ape)));
+                $nombre = ucwords(mb_strtolower(ltrim(rtrim($nom))));
+                $apellido = ucwords(mb_strtolower(ltrim(rtrim($ape))));
                 $sql = "SELECT id_autor FROM autor WHERE nombre_autor='$nombre' AND apellido_autor='$apellido'";
                 $mysqli->query($sql);
                 if ($mysqli->affected_rows <= 0) {
@@ -59,9 +70,13 @@ try {
                     $error = ($mysqli->affected_rows > 0) ? true : false;
                     $id_autor=$mysqli->insert_id;
                 }
-                $sql = "INSERT INTO trabajos_autor (id_trabajos,id_autor) VALUES ((SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo'),(SELECT id_autor FROM autor WHERE nombre_autor='$nombre' AND apellido_autor='$apellido'))";
+                $sql = "SELECT id_trabajos_tutor FROM trabajos_autor WHERE id_trabajos=(SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo') AND id_autor=(SELECT id_autor FROM autor WHERE nombre_autor='$nombre' AND apellido_autor='$apellido')";
                 $mysqli->query($sql);
-                $error = ($mysqli->affected_rows > 0) ? true : false;
+                if ($mysqli->affected_rows <= 0) {
+                    $sql = "INSERT INTO trabajos_autor (id_trabajos,id_autor) VALUES ((SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo'),(SELECT id_autor FROM autor WHERE nombre_autor='$nombre' AND apellido_autor='$apellido'))";
+                    $mysqli->query($sql);
+                    $error = ($mysqli->affected_rows > 0) ? true : false;
+                }
             } else {
                 $error = false;
             }
@@ -71,9 +86,13 @@ try {
     }
     if (isset($_POST['tutores'])) {
         foreach ($_POST['tutores'] as $key => $tutor) {
-            $sql = "INSERT INTO trabajos_tutor (id_trabajos,id_tutor) VALUES ((SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo'),(SELECT id_tutor FROM tutor WHERE id_tutor='$tutor'))";
+            $sql = "SELECT id_trabajos_tutor FROM trabajos_tutor WHERE id_trabajos=(SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo') AND id_tutor=(SELECT id_tutor FROM tutor WHERE id_tutor='$tutor')";
             $mysqli->query($sql);
-            $error = ($mysqli->affected_rows > 0) ? true : false;
+            if ($mysqli->affected_rows <= 0) {
+                $sql = "INSERT INTO trabajos_tutor (id_trabajos,id_tutor) VALUES ((SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo'),(SELECT id_tutor FROM tutor WHERE id_tutor='$tutor'))";
+                $mysqli->query($sql);
+                $error = ($mysqli->affected_rows > 0) ? true : false;
+            }
         }
     }
         if (!$error) {

@@ -5,7 +5,7 @@ $conexion = conexion();
 
 
 if (isset($_GET['id'])) {
-  $sql = "SELECT  ti.*,a.*,t.*, c.*
+  $sql = "SELECT  ti.*,a.*,t.*, c.*, concatName(ta.id_trabajos) as nombreConcat
     FROM trabajos_institucionales AS ti,autor AS a, tutor AS t, 
         trabajos_autor AS ta,trabajos_tutor AS tt, carreras AS c
         WHERE  ta.id_trabajos = ti.id_trabajos
@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
             AND tt.id_trabajos = ti.id_trabajos
             AND tt.id_tutor = t.id_tutor
             AND ti.id_carrera = c.id_carrera
-            AND ti.id_mod !=".$_GET['id'] ;
+            AND ti.id_mod !=".$_GET['id'] . " group by ti.id_trabajos";
   $resultado = mysqli_query($conexion, $sql);
   $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
   }
 } else {
   $sql = "SELECT count(id_mod) AS cantidad 
-FROM trabajos_institucionales 
+  FROM trabajos_institucionales 
   WHERE  id_mod != 3";
   $resultado = mysqli_query($conexion, $sql);
   $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);

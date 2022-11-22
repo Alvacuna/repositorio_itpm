@@ -4,26 +4,26 @@
     box-sizing: border-box;
 }
 body {
-    height: 600px;
+    padding: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #d8f8ff;
+    background: #f2f2f3;
     --color: #ffffff;
 }
 .form {
     width: 600px;
     background: #fff;
     border-radius: 25px;
-    padding: 3rem;
-    box-shadow: -10px 10px 10px -5px rgba(0, 0, 0, 0.8);
+    padding: 1.5rem 2rem;
+    box-shadow: 1px 1px 30px -5px #000;
     text-align: center;
 }
 .title {
     font-size: 2rem;
-    margin-bottom: 2rem;
 }
 .form__container {
+    margin-bottom: 2rem;
     display: grid;
 }
 .form__group {
@@ -35,12 +35,13 @@ body {
     background: none;
     padding: .6em;
     border: none;
-    border-bottom: 1px solid #848484;
+    border-bottom: 1px solid;
 }
 .form__input:focus {
     outline: none;
 }
 .form__label {
+    color: #989696;
     position: absolute;
     left: .5rem;
     top: .4rem;
@@ -66,11 +67,79 @@ select{
     background: #58b0f6;
     box-shadow: 1px 1px 30px -5px #58b0f6;
     border-radius: 10px;
-    transition: box-shadow 600ms;
+    transition: box-shadow 600ms ease;
 }
 .boton:hover{
     box-shadow: 1px 1px 30px 0px #3991d9;
+    scale: 1.1;
 }
-#arc{
+#archivos{
     margin-top: 15px;
+    background-color: #d1d1d1;
+    padding: 5px;
+    border-radius: 8px;
+}
+.autores{
+    margin-top: 10px;
+    justify-content: left;
+}
+.autor,.relacional{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+.autores .form__group{
+    margin: auto;
+    width: 44%;
+    margin: 15px;
+}
+.agregar, .eliminar{
+    height: 32px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    background: #58b0f6;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 130px;
+    transition: 600ms ease;
+}
+.agregar{
+    margin-left: 20px;
+}
+.eliminar{
+    margin-top: -10px;
+}
+.agregar:hover, .eliminar:hover{
+    box-shadow: 1px 1px 10px 0px #112188;
+    scale: 1.1;
+}
+.autores>h3{
+    text-align: left;
+    margin-left: 20px;
+}
+.relacional>div{
+    width: 50%;
+}
+.relacional select{
+    width: 66%;
+}
+.progress{
+    margin-top: 10px;
+    width: 100%;
+    height: 8px;
+    border: 1px;
+}
+progress::-webkit-progress-bar {
+    *background: linear-gradient(45deg, #7979ff, #ff7f7f);
+    background: #cacaca;
+    border-radius: 8px;
+}
+progress::-webkit-progress-value {
+    background: linear-gradient(45deg, #5b5bff, #ff6060);
+    *background: linear-gradient(45deg, #3737ff, #ff3939);
+    *background: linear-gradient(45deg, #1d3557, #e63946);
+    *background: linear-gradient(45deg, #457b9d, #e63946);
+    border-radius: 8px;
 }

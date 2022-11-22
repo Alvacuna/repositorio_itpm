@@ -82,7 +82,7 @@ getContReciente().then((data) => {
     const autorDesc = destacado.querySelector("[destacado-autor]")
     titleDesc.setAttribute("href", `../proyecto/src/pages/perfil.html?id=${dat.id_trabajos}`);
     titleDesc.textContent= dat.titulo
-    autorDesc.textContent = dat.nombre_autor + " " + dat.apellido_autor
+    autorDesc.textContent = dat.nombreConcat
     descContainer.append(destacado)
   })
 

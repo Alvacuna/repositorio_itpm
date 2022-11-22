@@ -1,41 +1,52 @@
 /* Validar documentos */
-/* function val() {
-    if (document.formu.archivos.files[0].type != "application/pdf") {
-        alert('Seleccione un archivo PDF');
-        document.formu.archivos.value = '';
-    }
-} */
-function val() {
-    var archivos = document.formu.archivos;
+const archivos = document.querySelector('#archivos');
+archivos.addEventListener('change', (e) => {
     for (let i = 0; i < archivos.files.length; i++) {
         if (archivos.files[i].type != "application/pdf") {
-            alert('Seleccione un archivo PDF');
+            alert('Seleccione un archivo PDF/nEl archivo '+(i+1)+' no es un PDF');
             archivos.value = '';
         }
     }
-}
+});
 /* Select de Año dinámico */
 const gestion = new Date().getFullYear();
-for (let i = gestion; i >= 1998; i--) {
+for (let i = gestion; i >= 2020; i--) {
     document.querySelector('#gestion').insertAdjacentHTML("beforeend", `<option value="${i}-II">${i} - II</option>`);
     document.querySelector('#gestion').insertAdjacentHTML("beforeend", `<option value="${i}-I">${i} - I</option>`);
 }
 /* Inputs dinámicos para autor */
-const contenedor = document.querySelector('#dinamic');
-const btnAgregar = document.querySelector('#agregar');
+const autores = document.querySelector('#autores');
+const agregarAutores = document.querySelector('#agregarautor');
 let total = 1;
-btnAgregar.addEventListener('click', () => {
-    contenedor.insertAdjacentHTML("beforeend", `<div><input type="text" name="nombre[]" placeholder="Autor ${total} Nombre" required><input type="text" name="apellido[]" placeholder="Autor ${total++} Apellido" required><button onclick="eliminar(this)">Eliminar</button></div>`);
+agregarAutores.addEventListener('click', () => {
+    const autor = document.querySelector('#autor').cloneNode(true);
+    autor.insertAdjacentHTML("beforeend", `<button type="button" onclick="eliminar(this)" class="eliminar">Eliminar Campos</button>`);
+    autores.insertAdjacentElement("beforeend", autor);
 });
+/* Inputs dinámicos para tutor */
+const tutores = document.querySelector('#tutores');
+const agregarTutores = document.querySelector('#agregartutor');
+agregarTutores.addEventListener('click', () => {
+    const tutor = document.querySelector('#tutor').cloneNode(true);
+    tutor.insertAdjacentHTML("beforeend", `<button type="button" onclick="eliminar(this)" class="eliminar">Eliminar Campo</button>`);
+    tutores.insertAdjacentElement("beforeend", tutor);
+})
+/* Eliminar */
 const eliminar = (e) => {
     e.parentNode.remove();
-    actualizarContador();
 };
-const actualizarContador = () => {
-    let divs = contenedor.children;
-    total = 1;
-    for (let i = 0; i < divs.length; i++) {
-        divs[i].children[0].placeholder = `Autor ${total} Nombre`;
-        divs[i].children[1].placeholder = `Autor ${total++} Apellido`;
-    }
-};
+/* Barra de Progreso */
+const form = document.querySelector('#form');
+form.addEventListener('submit', (e) => {
+    const files = document.querySelector('#archivos').files[0];
+    const progress = document.querySelector('#progress');
+    let formdata = new FormData();
+    formdata.append("inputFile", files);
+    let ax = new XMLHttpRequest();
+    ax.upload.addEventListener("progress",(e) => {
+        let porcentaje = (e.loaded * 100) / e.total;
+        progress.value = Math.round(porcentaje);
+    });
+    ax.open("POST", "prueba.php");
+    ax.send(formdata);
+});

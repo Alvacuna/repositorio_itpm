@@ -4,7 +4,7 @@ include 'conect.php';
 $conexion = conexion();
 
 if (isset($_GET['id'])) {
-    $sql = "SELECT  ti.*,a.*,t.*, c.*
+    $sql = "SELECT  ti.*,a.*,t.*, c.*, concatName(ta.id_trabajos) as nombreConcat
     FROM trabajos_institucionales AS ti,autor AS a, tutor AS t, 
         trabajos_autor AS ta,trabajos_tutor AS tt, carreras AS c
         WHERE  ta.id_trabajos = ti.id_trabajos
@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
             AND tt.id_trabajos = ti.id_trabajos
             AND tt.id_tutor = t.id_tutor
             AND ti.id_carrera = c.id_carrera
-            AND tt.id_trabajos =" . $_GET['id'];
+            AND tt.id_trabajos =" . $_GET['id']. " group by ti.id_trabajos";
     $resultado = mysqli_query($conexion, $sql);
     $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
         echo json_encode([]);
     }
 } else {
-    $sql = "SELECT  ti.*,a.*,t.*, c.*
+    $sql = "SELECT  ti.*,a.*,t.*, c.*, concatName(ta.id_trabajos) as nombreConcat
     FROM trabajos_institucionales AS ti,autor AS a, tutor AS t, 
         trabajos_autor AS ta,trabajos_tutor AS tt, carreras AS c
         WHERE  ta.id_trabajos = ti.id_trabajos

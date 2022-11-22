@@ -1,4 +1,17 @@
-<?php require_once 'conexion.php'; ?>
+<?php
+    session_start();
+    if (!isset ($_SESSION['usuario'])){
+        echo '
+        <script>
+        alert ("Debes iniciar sesion");
+        window.location = "../index.php";
+        </script>
+        ';
+        session_destroy();
+        die();
+    }
+    require_once 'conexion.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

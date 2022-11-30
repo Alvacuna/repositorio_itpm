@@ -1,0 +1,156 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  background-image: url(../imagenes/svg/layered-peaks-haikeisec.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*HEADER*/
+.header {
+  background: #0B090A;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.title {
+  margin-left: 10px;
+  font-weight: bold;
+  border-left: solid #fff 2px;
+  padding: 0 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 15px;
+}
+
+.logo {
+  width: 45px;
+  display: block;
+}
+
+.table__container {
+  width: 800px;
+  min-width: 500px;
+  margin: auto;
+  padding-top: 100px;
+}
+
+table {
+
+  background-color: white;
+  text-align: left;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 1em;
+  overflow: hidden;
+  text-align: center;
+}
+.tr__td--bot{
+  padding: 15px 0;
+  display: flex;
+}
+
+.tr__form--buttons{
+  display: block;
+  gap: 10px;
+}
+
+.tr__form--buttons--separator {
+  padding-right: 5px;
+}
+
+.btn {
+  width: 70px;
+  border-radius: 5px;
+}
+
+.btn__in{
+  background-color: #660708;
+  color: #ddd;
+}
+.btn__act{
+  background-color: #161A1D;
+  color: #ddd;
+}
+.btn__mod{
+  background-color: rgb(136, 128, 130);
+  color: #ddd;
+}
+
+
+th,
+td {
+  padding: 10px;
+}
+
+thead {
+  background-color: #161A1D;
+  border-bottom: solid 5px #0B090A;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+tr:hover td {
+  background-color: #B1A7A6;
+  color: BLACK;
+}
+
+.lbl {
+  display: inline-block;
+  width: 45px;
+  height: 25px;
+  background: #979797;
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+  transition: .2s;
+}
+
+.lbl::after {
+  content: '';
+  display: block;
+  width: 17px;
+  height: 17px;
+  background: #eee;
+  border-radius: 100px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: .2s;
+}
+
+#switch:checked+.lbl::after {
+  left: 25px;
+}
+
+#switch:checked+.lbl {
+  background: #1D3557;
+}
+
+#switch {
+  display: none;
+}
+
+#mod {
+  position: absolute;
+  padding: 3px;
+  border-radius: 5px;
+  margin-left: 7px;
+  background-color: #043b3d;
+  color: white;
+}

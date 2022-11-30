@@ -163,10 +163,7 @@ getListGestion().then((data) => {
     const recursoProduction = product.querySelector("[contenido-recurso]");
     añoDeProduction.textContent = "Gestion: " + dat.gestion;
     recursoProduction.textContent = "Recursos: " + dat.cantidad;
-    añoDeProduction.setAttribute(
-      "href",
-      `../pages/searchGestion.html?id=${dat.gestion}`
-    );
+    añoDeProduction.setAttribute("href",`../pages/searchGestion.html?id="${dat.gestion}"`);
     productContainer.append(product);
     return { gestion: dat.gestion, cantidad: dat.cantidad, element: product };
   });

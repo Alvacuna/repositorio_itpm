@@ -65,12 +65,12 @@
   }
   
   .sub-container-perfil {
-    /* display: grid;
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr; */
+    grid-template-rows: 1fr; 
 
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex;
+    flex-wrap: wrap; */
   }
   
   .title-carrera {
@@ -92,6 +92,9 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 .footerLink {
     display: flex;

@@ -176,7 +176,7 @@ getListGestion().then((data) => {
     recursoProduction.textContent = "Recursos: " + dat.cantidad;
     añoDeProduction.setAttribute(
       "href",
-      `../pages/searchGestion.html?id=${dat.gestion}`
+      `../pages/searchGestion.html?id="${dat.gestion}"`
     );
     productContainer.append(product);
     return { gestion: dat.gestion, cantidad: dat.cantidad, element: product };

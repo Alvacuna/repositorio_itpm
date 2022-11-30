@@ -76,5 +76,13 @@
         </div>
     </main>
     <a href="php/cerrar.php"><input type="button" value="Cerrar sesion"></a>
+    <?php
+    $usuario = $_SESSION['usuario'];
+    $validar = mysqli_query($conexion, "SELECT * FROM usuarios WHERE usuario = '$usuario'");
+    $row=$validar->fetch_array();
+    if ($row['rol_admin'] == 'admin') {
+        echo '<a href="php/admin_usuario.php"><input type="button" value="Administrar Usuarios"></a>';
+    }
+    ?>
 </body>
 </html>

@@ -5,11 +5,12 @@
 }
 body{
     background: #f2f2f3;
+    margin: 20px;
 }
 .container__card{
     max-width: 1000px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 5%;
     perspective: 1000px;
     display: flex;
     justify-content: center;
@@ -17,7 +18,7 @@ body{
     border-radius: 20px;
     flex-wrap: wrap;
     box-shadow: 1px 1px 30px -5px #000;
-    padding: 20px;
+    padding: 5px 20px;
 }
 .card__principal{
     margin: 20px;
@@ -70,21 +71,6 @@ body{
 .body__card__back p{
     font-size: 20px;
 }
-.body__card__back input{
-    padding: 10px 20px;
-    margin-top: 30px;
-    cursor: pointer;
-    font-size: 16px;
-    border: none;
-    color: #fff;
-    background: #58b0f6;
-    box-shadow: 1px 1px 30px -5px #58b0f6;
-    border-radius: 10px;
-    transition: box-shadow 600ms;
-}
-.body__card__back input:hover{
-    box-shadow: 1px 1px 30px 0px #449de6;
-}
 input{
     padding: 10px 20px;
     margin-top: 30px;
@@ -98,5 +84,16 @@ input{
     transition: box-shadow 600ms;
 }
 input:hover{
-    box-shadow: 1px 1px 30px 0px #3991d9;
+    box-shadow: 1px 1px 30px 0px #03355e;
+}
+@media screen and (max-width: 960px){.container__card{max-width: 650px;}}
+@media screen and (max-width: 680px){.container__card{max-width: 400px;}}
+@media screen and (max-width: 350px){
+    .container__card{
+        min-width: 230px;
+        margin: none;
+        background: none;
+        border-radius: 0px;
+        box-shadow: none;
+    }
 }

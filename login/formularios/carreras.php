@@ -10,7 +10,6 @@
         session_destroy();
         die();
     }
-    require_once 'conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,7 +21,7 @@
     <link rel="stylesheet" href="../css/css.css">
 </head>
 <body>
-    <form action="altac.php" name="formu" method="POST" class="form">
+    <form action="altac1.php" name="formu" method="POST" class="form">
         <h2>Registro de Carreras</h2>
         <div class="form__container -form">
             <div class="form__group grupo">
@@ -30,8 +29,8 @@
                 <label for="nombre" class="form__label">Nombre de Carrera</label>
             </div>
         </div>
-        <input type="submit" value="Enviar" class="boton">
         <a href="javascript: history.go(-1)"><input type="button" value="Regresar" class="boton"></a>
+        <input type="submit" value="Enviar" class="boton">
     </form>
 </body>
 </html>

@@ -23,7 +23,6 @@
     $Inactivo=$_POST['Inactivo'];
     $query = mysqli_query($conexion, "UPDATE  usuarios SET estado = '$Inactivo' WHERE id_usuario = '$id' "); 
     }
-
     if ($query){
         Header("Location: admin_usuario.php");
     }

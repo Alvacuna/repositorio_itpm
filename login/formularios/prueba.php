@@ -20,19 +20,17 @@ try {
     $mysqli->autocommit(FALSE);
     $patron_texto = "/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙÑñ\s]+$/";
     error_reporting(E_ERROR);
-    $error = true;
+    $exchange = true;
     $f = '"\'`.,:;?!¡¿()';
     $patron_texto_f = '/[0-9a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙÑñ' . preg_quote($f, '/') . '\s]/';
-    $t = $_POST['titulo'];
-    $tit = filter_var($t, FILTER_SANITIZE_STRING);
-    $r = $_POST['resumen'];
-    $res = filter_var($r, FILTER_SANITIZE_STRING);
+    $tit = $_POST['titulo'];
+    $res = $_POST['resumen'];
     $gestion = $_POST['gestion'];
     $modalidad = $_POST['modalidad'];
     $carrera = $_POST['carrera'];
     if (preg_match($patron_texto_f, $tit) && preg_match($patron_texto_f, $res)) {
-        $titulo = mb_strtoupper(ltrim(rtrim($tit)));
-        $resumen = ucfirst(mb_strtolower(ltrim(rtrim($res))));
+        $titulo = $mysqli->real_escape_string(mb_strtoupper(trim($tit), 'UTF-8'));
+        $resumen = $mysqli->real_escape_string(ucfirst(mb_strtolower(trim($res), 'UTF-8')));
         $sql = "SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo'";
         $mysqli->query($sql);
         if ($mysqli->affected_rows <= 0) {
@@ -48,11 +46,11 @@ try {
             $ruta = 'https://drive.google.com/open?id=' . $resultado->id;
             $sql = "INSERT INTO trabajos_institucionales (titulo,resumen,gestion,link_pdf,id_mod,id_carrera) VALUES ('$titulo','$resumen','$gestion','$ruta','$modalidad','$carrera')";
             $mysqli->query($sql);
-            $error = ($mysqli->affected_rows > 0) ? true : false;
+            $exchange = ($mysqli->affected_rows > 0) ? true : false;
             $id_trabajo = $mysqli->insert_id;
         }
     } else {
-        $error = false;
+        $exchange = false;
     }
     if (isset($_POST['nombresa']) && isset($_POST['apellidosa'])) {
         foreach ($_POST['nombresa'] as $key => $n) {
@@ -60,14 +58,14 @@ try {
             $nom = filter_var($n, FILTER_SANITIZE_STRING);
             $ape = filter_var($a, FILTER_SANITIZE_STRING);
             if (preg_match($patron_texto, $nom) && preg_match($patron_texto, $ape)) {
-                $nombre = ucwords(mb_strtolower(ltrim(rtrim($nom))));
-                $apellido = ucwords(mb_strtolower(ltrim(rtrim($ape))));
+                $nombre = ucwords(mb_strtolower(trim($nom)));
+                $apellido = ucwords(mb_strtolower(trim($ape)));
                 $sql = "SELECT id_autor FROM autor WHERE nombre_autor='$nombre' AND apellido_autor='$apellido'";
                 $mysqli->query($sql);
                 if ($mysqli->affected_rows <= 0) {
                     $sql = "INSERT INTO autor (nombre_autor,apellido_autor) VALUES ('$nombre','$apellido')";
                     $mysqli->query($sql);
-                    $error = ($mysqli->affected_rows > 0) ? true : false;
+                    $exchange = ($mysqli->affected_rows > 0) ? true : false;
                     $id_autor=$mysqli->insert_id;
                 }
                 $sql = "SELECT id_trabajos_tutor FROM trabajos_autor WHERE id_trabajos=(SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo') AND id_autor=(SELECT id_autor FROM autor WHERE nombre_autor='$nombre' AND apellido_autor='$apellido')";
@@ -75,14 +73,14 @@ try {
                 if ($mysqli->affected_rows <= 0) {
                     $sql = "INSERT INTO trabajos_autor (id_trabajos,id_autor) VALUES ((SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo'),(SELECT id_autor FROM autor WHERE nombre_autor='$nombre' AND apellido_autor='$apellido'))";
                     $mysqli->query($sql);
-                    $error = ($mysqli->affected_rows > 0) ? true : false;
+                    $exchange = ($mysqli->affected_rows > 0) ? true : false;
                 }
             } else {
-                $error = false;
+                $exchange = false;
             }
         }
     } else {
-        $error = false;
+        $exchange = false;
     }
     if (isset($_POST['tutores'])) {
         foreach ($_POST['tutores'] as $key => $tutor) {
@@ -91,11 +89,11 @@ try {
             if ($mysqli->affected_rows <= 0) {
                 $sql = "INSERT INTO trabajos_tutor (id_trabajos,id_tutor) VALUES ((SELECT id_trabajos FROM trabajos_institucionales WHERE titulo='$titulo'),(SELECT id_tutor FROM tutor WHERE id_tutor='$tutor'))";
                 $mysqli->query($sql);
-                $error = ($mysqli->affected_rows > 0) ? true : false;
+                $exchange = ($mysqli->affected_rows > 0) ? true : false;
             }
         }
     }
-        if (!$error) {
+        if (!$exchange) {
             if (!$mysqli->rollback()) {
                 echo '<script>alert("Falló la reversión de la transacción");';
             } else {
@@ -109,10 +107,11 @@ try {
                 echo '<script>alert("Datos registrados correctamente");';
             }
         }
-        echo'window.history.back();</script>';
+        $mysqli->close();
+        echo'window.location = "formulario.php";</script>';
 } catch (Google_Service_Exception $gs) {
     $mensaje = json_decode($gs->getMessage());
-    echo $mensaje->error->message();
+    echo $mensaje->exchange->message();
 } catch (Exception $e) {
     echo $e->getMessage();
 }

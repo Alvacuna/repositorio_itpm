@@ -20,6 +20,8 @@ const agregarAutores = document.querySelector('#agregarautor');
 let total = 1;
 agregarAutores.addEventListener('click', () => {
     const autor = document.querySelector('#autor').cloneNode(true);
+    autor.childNodes[1].childNodes[1].value='';
+    autor.childNodes[3].childNodes[1].value='';
     autor.insertAdjacentHTML("beforeend", `<button type="button" onclick="eliminar(this)" class="eliminar">Eliminar Campos</button>`);
     autores.insertAdjacentElement("beforeend", autor);
 });
@@ -50,3 +52,16 @@ form.addEventListener('submit', (e) => {
     ax.open("POST", "prueba.php");
     ax.send(formdata);
 });
+    /* Limpiar Formulario */
+    /* form.reset(); */
+function limpiar(){
+    form.reset();
+}
+window.addEventListener("load", () => {
+    form.reset();
+});
+let cs = false;
+if (cs == true) {
+    form.reset();
+    cs = false;
+}

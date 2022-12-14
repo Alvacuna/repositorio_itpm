@@ -48,12 +48,12 @@
                 <label for="resumen" class="form__label">Resumen</label>
             </div>
             <div class="relacional">
-                <div>
+                <div class="carrera">
                     <label for="carrera">Carrera</label>
                     <select name="carrera" id="" required>
                         <option value="" disabled selected>Seleccione Carrera</option>
                         <?php
-                        $query = 'SELECT * FROM carreras';
+                        $query = 'SELECT * FROM carreras ORDER BY nombre_carrera';
                         $result = $mysqli->query($query);
                         while ($r = $result->fetch_assoc()) {
                         ?>
@@ -61,12 +61,12 @@
                         <?php } ?>
                     </select>
                 </div>
-                <div>
+                <div class="modalidad">
                     <label for="modalidad">Modalidad</label>
                     <select name="modalidad" id="" required>
                         <option value="" disabled selected>Seleccione Modalidad</option>
                         <?php
-                            $query = 'SELECT * FROM modalidad';
+                            $query = 'SELECT * FROM modalidad ORDER BY tipo_documento';
                             $result = $mysqli->query($query);
                             while ($r = $result->fetch_assoc()) {
                         ?>
@@ -81,11 +81,11 @@
                     <select name="tutores[]" id="" required>
                         <option value="" disabled selected>Seleccione Tutor</option>
                         <?php
-                            $query = 'SELECT * FROM tutor';
+                            $query = 'SELECT * FROM tutor ORDER BY apellido_tutor';
                             $result = $mysqli->query($query);
                             while ($r = $result->fetch_assoc()) {
                         ?>
-                                <option value="<?= $r['id_tutor']; ?>"><?= $r['nombre_tutor'].' '.$r['apellido_tutor'] ?></option>
+                                <option value="<?= $r['id_tutor']; ?>"><?= $r['apellido_tutor'].' '.$r['nombre_tutor'] ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -103,7 +103,7 @@
             </div>
         </div>
         <input type="submit" value="Enviar" class="boton">
-        <a href="javascript: history.go(-1)"><input type="button" value="Regresar" class="boton"></a>
+        <a href='javascript: location = "../sesion.php"'><input type="button" value="Regresar" class="boton"></a>
     </form>
     <script src="../js/main.js"></script>
 </body>

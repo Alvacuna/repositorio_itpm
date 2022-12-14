@@ -9,7 +9,6 @@ body {
     justify-content: center;
     align-items: center;
     background: #f2f2f3;
-    --color: #ffffff;
 }
 .form {
     width: 600px;
@@ -132,14 +131,41 @@ select{
     border: 1px;
 }
 progress::-webkit-progress-bar {
-    *background: linear-gradient(45deg, #7979ff, #ff7f7f);
     background: #cacaca;
     border-radius: 8px;
 }
 progress::-webkit-progress-value {
     background: linear-gradient(45deg, #5b5bff, #ff6060);
-    *background: linear-gradient(45deg, #3737ff, #ff3939);
-    *background: linear-gradient(45deg, #1d3557, #e63946);
-    *background: linear-gradient(45deg, #457b9d, #e63946);
     border-radius: 8px;
+}
+@media screen and (max-width: 670px){
+    .relacional>.carrera{
+        width: 40%;
+    }
+    .carrera select{
+        width: 148px;
+    }
+    .modalidad select{
+        width: 168px;
+    }
+}
+@media screen and (max-width: 650px){
+    .autores .form__group{
+        width: 88%;
+    }
+}
+@media screen and (max-width: 550px){
+    .relacional>.carrera,.relacional>div{width: 100%;}
+}
+@media screen and (max-width: 350px){
+    .form{
+        margin: 5px;
+        background: none;
+        max-width: 278px;
+        padding: 5px;
+        box-shadow: none;
+    }
+    body{
+        background: #fff;
+    }
 }

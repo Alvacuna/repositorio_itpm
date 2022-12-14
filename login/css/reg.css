@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f3;
+    --color: #ffffff;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+thead {
+    border-bottom: 2px solid #000
+}
+
+th,
+td {
+    padding: 5px;
+    border: 1px solid #fff
+}
+
+.titulo {
+    width: 50px;
+}
+
+tr:nth-child(odd) {
+    background-color: #ddd;
+}
+
+tr:hover td {
+    background-color: #adadad
+}
+
+button {
+    cursor: pointer;
+    background: #58b0f6;
+    color: #fff;
+    border-radius: 10px;
+    transition: box-shadow 600ms ease;
+    padding: 6px 10px;
+    border: none;
+}
+
+button:hover {
+    box-shadow: 1px 1px 30px 0px #3991d9;
+    scale: 1.1;
+}
